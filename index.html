@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>أشطر بنوته</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #3f51b5, #9c27b0);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-top: 30px;
+    }
+    .quiz-box {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 15px;
+      max-width: 600px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+    }
+    button {
+      background: #ff4081;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background: #f50057;
+    }
+    .feedback {
+      font-size: 1.2em;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>أشطر بنوته في الدنيا ❤️</h1>
+
+  <div class="quiz-box">
+    <p id="question">سؤال هيظهر هنا...</p>
+    <input type="text" id="answer" placeholder="اكتب الإجابة هنا">
+    <br>
+    <button onclick="checkAnswer()">تأكيد</button>
+    <p id="feedback" class="feedback"></p>
+  </div>
+
+  <div>
+    <h3>إضافة كلمات من ملف TXT:</h3>
+    <input type="file" id="fileInput" accept=".txt">
+  </div>
+
+  <div>
+    <h3>رفع صورة كلمات (OCR):</h3>
+    <input type="file" id="imageInput" accept="image/*">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2/dist/tesseract.min.js"></script>
+  <script>
+    // الكلمات الأساسية
+    let words = [
+      {en: "instantly", ar: "على الفور"},
+      {en: "culture", ar: "الثقافة"},
+      {en: "leader", ar: "قائد"},
+      {en: "creative", ar: "مبدع"},
+    ];
+
+    let currentWord;
+    let score = 0;
+    let total = 0;
+
+    const correctMessages = [
+      "أشطر لينا ❤️",
+      "شطوره يا بطتي ❤️",
+      "شطوره يا قطتي ❤️",
+      "ايه الشطاره دي يا مزتي ❤️"
+    ];
+
+    const wrongMessages = [
+      "نركز يا قطتي ❤️",
+      "فيه أحسن يا مزه ❤️",
+      "عادي يا حبيبي نحفظ تاني ❤️"
+    ];
+
+    function newQuestion() {
+      currentWord = words[Math.floor(Math.random() * words.length)];
+      if (Math.random() > 0.5) {
+        document.getElementById("question").innerText = 
+          `What is the meaning of "${currentWord.en}" بالعربي؟`;
+        currentWord.mode = "en2ar";
+      } else {
+        document.getElementById("question").innerText = 
+          `ما معنى "${currentWord.ar}" بالإنجليزي؟`;
+        currentWord.mode = "ar2en";
+      }
+      document.getElementById("answer").value = "";
+      document.getElementById("feedback").innerText = "";
+    }
+
+    function checkAnswer() {
+      const ans = document.getElementById("answer").value.trim();
+      let correct = false;
+
+      if (currentWord.mode === "en2ar" && ans === currentWord.ar) {
+        correct = true;
+      }
+      if (currentWord.mode === "ar2en" && ans === currentWord.en) {
+        correct = true;
+      }
+
+      total++;
+      if (correct) {
+        score++;
+        document.getElementById("feedback").innerText =
+          correctMessages[Math.floor(Math.random() * correctMessages.length)];
+      } else {
+        document.getElementById("feedback").innerText =
+          wrongMessages[Math.floor(Math.random() * wrongMessages.length)];
+      }
+
+      if (total >= 5) {
+        document.getElementById("question").innerText =
+          `وااااااااااااو بجد أشطر بنوته ف الدنيا والله ❤️❤️ (Score: ${score}/${total})`;
+      } else {
+        setTimeout(newQuestion, 1500);
+      }
+    }
+
+    // رفع ملف TXT
+    document.getElementById("fileInput").addEventListener("change", function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const lines = e.target.result.split("\n");
+        lines.forEach(line => {
+          const parts = line.split("-");
+          if (parts.length >= 2) {
+            words.push({en: parts[0].trim(), ar: parts[1].trim()});
+          }
+        });
+        alert("تم إضافة الكلمات من الملف!");
+      };
+      reader.readAsText(file, "UTF-8");
+    });
+
+    // OCR من صورة
+    document.getElementById("imageInput").addEventListener("change", function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      Tesseract.recognize(file, 'eng+ara').then(({ data: { text } }) => {
+        alert("تم استخراج النص:\n" + text);
+        // تقدر تعالج النص وتضيفه لقائمة الكلمات هنا
+      });
+    });
+
+    newQuestion();
+  </script>
+</body>
+</html>
