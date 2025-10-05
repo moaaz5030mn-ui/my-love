@@ -165,6 +165,10 @@
         </div>
 
         <div id="feedback" aria-live="assertive"></div>
+        <button id="homeBtnFixed" class="btn-home" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999;">
+  🏠 رجوع للصفحة الرئيسية
+</button>
+
       </section>
 
       <!-- review -->
@@ -212,33 +216,82 @@ const reviewBlock = document.getElementById('reviewBlock');
 const reviewList = document.getElementById('reviewList');
 const retryBtn = document.getElementById('retryBtn');
 const homeBtn = document.getElementById('homeBtn');
+// زرار الرجوع الثابت في كل الصفحات
+const homeBtnFixed = document.getElementById('homeBtnFixed');
+homeBtnFixed.addEventListener('click', ()=>{
+  // إرجاع كل حاجة لحالة البداية
+  originalWords = originalWords.length ? originalWords.slice() : defaultWords.slice();
+  words = [];
+  mistakes = [];
+  current = 0;
+  mode = null;
+  document.getElementById('hearts').style.display='flex';
+  document.getElementById('icon-book').style.display='block';
+  document.getElementById('subtitle').style.display='block';
+  document.getElementById('divider').style.display='block';
+  document.getElementById('main-title').style.display='block';
+  document.getElementById('homeControls').style.display='flex';
+  document.getElementById('modesSection').style.display='none';
+  document.getElementById('quizBlock').style.display='none';
+  document.getElementById('reviewBlock').style.display='none';
+  document.getElementById('finalMsg').style.display='none';
+  feedbackEl.innerText = '';
+  updateProgressBar(0, originalWords.length);
+  window.scrollTo({top:0, behavior:"smooth"});
+});
+
 const finalMsg = document.getElementById('finalMsg');
 const speakQuestionBtn = document.getElementById('speakQuestion');
 
-/* ====== default words (sample) ====== */
 const defaultWords = [
-  {en:"hello", ar:"مرحبا"},
-  {en:"book", ar:"كتاب"},
-  {en:"apple", ar:"تفاحة"},
-  {en:"school", ar:"مدرسة"},
-  {en:"water", ar:"ماء"},
-  {en:"friend", ar:"صديق"},
-  {en:"family", ar:"عائلة"},
-  {en:"happy", ar:"سعيد"},
-  {en:"love", ar:"حب"},
-  {en:"write", ar:"يكتب"},
-  {en:"read", ar:"يقرأ"},
-  {en:"computer", ar:"حاسوب"},
-  {en:"city", ar:"مدينة"},
-  {en:"car", ar:"سيارة"},
-  {en:"music", ar:"موسيقى"},
-  {en:"light", ar:"ضوء"},
-  {en:"night", ar:"ليل"},
-  {en:"day", ar:"نهار"},
-  {en:"chair", ar:"كرسي"},
-  {en:"table", ar:"طاولة"}
+  { en: "duty", ar: "واجب - وظيفة" },
+  { en: "emergency", ar: "حالة طوارئ" },
+  { en: "flood", ar: "يغمر - فيضان" },
+  { en: "obligation", ar: "التزام - واجب" },
+  { en: "protect", ar: "يحمي - يحافظ" },
+  { en: "rescue", ar: "ينقذ" },
+  { en: "risk", ar: "يتخذ مخاطرة" },
+  { en: "risky", ar: "خطير - محفوف بالمخاطر" },
+  { en: "truth", ar: "حقيقة" },
+  { en: "accident", ar: "حادث" },
+  { en: "act", ar: "يفعل - يتصرف" },
+  { en: "aspect", ar: "جانب" },
+  { en: "believe in", ar: "يؤمن بـ" },
+  { en: "breathe", ar: "يتنفس" },
+  { en: "crowded", ar: "مزدحم" },
+  { en: "damp", ar: "رطب" },
+  { en: "debate", ar: "نقاش" },
+  { en: "descriptive", ar: "وصفى" },
+  { en: "drown", ar: "يغرق" },
+  { en: "fear", ar: "خوف" },
+  { en: "fire", ar: "نار - حريق" },
+  { en: "firefighter", ar: "رجل إطفاء" },
+  { en: "forever", ar: "إلى الأبد" },
+  { en: "hope", ar: "أمل" },
+  { en: "injured", ar: "مصاب" },
+  { en: "ladder", ar: "سلم" },
+  { en: "lifeguard", ar: "منقذ" },
+  { en: "moss", ar: "طحالب" },
+  { en: "overall", ar: "إجمالي - عام" },
+  { en: "pine needle", ar: "إبرة الصنوبر" },
+  { en: "put out", ar: "يطفئ" },
+  { en: "rustling", ar: "خفيف (أصوات الأوراق)" },
+  { en: "sadly", ar: "بأسف" },
+  { en: "save", ar: "ينقذ - يحفظ" },
+  { en: "scenario", ar: "سيناريو" },
+  { en: "serious", ar: "خطير - جاد" },
+  { en: "serve", ar: "يخدم" },
+  { en: "service", ar: "خدمة" },
+  { en: "stand-stood-stood", ar: "يقف" },
+  { en: "storm", ar: "عاصفة" },
+  { en: "summarize", ar: "يلخص" },
+  { en: "texture", ar: "نسيج - قوام" },
+  { en: "training", ar: "تدريب" },
+  { en: "trap", ar: "يحبس - يخدع" },
+  { en: "voluntary", ar: "تطوعي" },
+  { en: "worth", ar: "يستحق" },
+  { en: "yet", ar: "ما زال - بعد" }
 ];
-
 /* ====== utility ====== */
 function shuffle(a){ return a.sort(()=>Math.random()-0.5); }
 function dedupeKeepOrder(arr){
