@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>أشطر بنوته ف الدنيا ❤️ — لينا الإصدار العالمي</title>
+<title>أشطر بنوته ف الدنيا❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -16,25 +16,16 @@
     --danger:#ef4444;
     --card-bg: rgba(255,255,255,0.98);
     --text:#0f172a;
-    --pink:#ec4899;
   }
   *{box-sizing:border-box}
-  body,html{height:100%;margin:0;font-family:"Cairo",sans-serif;background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom));color:var(--text);-webkit-font-smoothing:antialiased}
-  .stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
-  .card { width:100%; max-width:980px; border-radius:18px; background:var(--card-bg); box-shadow:0 30px 70px rgba(15,23,42,0.08); padding:30px; text-align:center; position:relative; overflow:hidden }
+  body,html{height:100%;margin:0;font-family:"Cairo",sans-serif;background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom));color:var(--text);}
 
-  /* welcome overlay */
-  .welcome {
-    position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
-    display:flex; align-items:center; justify-content:center; flex-direction:column; padding:28px;
-    transition:opacity .45s ease, transform .45s ease; z-index:40;
+  /* center stage */
+  .stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px}
+  .card {
+    width:100%; max-width:980px; border-radius:18px; background:var(--card-bg);
+    box-shadow:0 30px 70px rgba(15,23,42,0.08); padding:30px; text-align:center;
   }
-  .welcome.hidden { opacity:0; pointer-events:none; transform:translateY(-10px) }
-  .welcome h2{font-size:26px;margin:8px 0 6px;color:var(--primary); font-weight:800}
-  .welcome p{margin:6px 0 18px;color:var(--muted); font-size:16px}
-  .welcome .big-cta{padding:14px 22px;border-radius:12px;border:none;background:linear-gradient(90deg,var(--accent),#06b6d4); color:white; font-size:18px;font-weight:800; cursor:pointer; box-shadow:0 12px 36px rgba(59,130,246,0.16)}
-  .welcome .small{display:flex; gap:8px; margin-top:12px; align-items:center}
-  .resume-banner{background:linear-gradient(90deg,#fef3c7,#fef08a); padding:8px 12px; border-radius:12px; font-weight:700; color:#92400e; display:inline-flex; gap:12px; align-items:center}
 
   /* header */
   .hearts{display:flex;gap:10px;justify-content:center;margin-bottom:8px}
@@ -72,10 +63,6 @@
   .mode-desc{color:var(--muted); margin-bottom:14px}
   .mode-start{padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent),#06b6d4);color:white;font-weight:800;cursor:pointer}
 
-  /* difficulty */
-  .difficulty{display:flex;gap:10px;justify-content:center; margin-top:10px}
-  .diff-btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(37,99,235,0.12); background:transparent; cursor:pointer; font-weight:800}
-
   /* quiz */
   .quiz{margin-top:22px;display:none}
   .progress-wrap{width:92%;max-width:760px;margin:8px auto}
@@ -83,10 +70,12 @@
   #progressBar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#60a5fa);transition:width .45s ease}
   #progressText{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;text-shadow:0 1px 2px rgba(0,0,0,0.25);font-size:14px}
 
-  #question{font-size:20px;margin:18px 0;padding:14px;border-radius:10px;background:rgba(2,6,23,0.03); min-height:64px; display:flex;align-items:center;justify-content:center;gap:10px;transition:transform .25s ease}
-  .speak-btn{ background:transparent;border:none;font-size:18px;cursor:pointer;color:var(--primary); }
+  #question{font-size:20px;margin:18px 0;padding:14px;border-radius:10px;background:rgba(2,6,23,0.03); min-height:64px; display:flex;align-items:center;justify-content:center;gap:10px}
+  .speak-btn{
+    background:transparent;border:none;font-size:18px;cursor:pointer;color:var(--primary);
+  }
   .options{display:flex;flex-direction:column;gap:12px;align-items:center;margin-bottom:12px}
-  .option{width:90%;max-width:680px;padding:12px 16px;border-radius:12px;background:var(--accent);color:white;font-weight:700;cursor:pointer;box-shadow:0 12px 34px rgba(59,130,246,0.12);transition:transform .12s, box-shadow .12s}
+  .option{width:90%;max-width:680px;padding:12px 16px;border-radius:12px;background:var(--accent);color:white;font-weight:700;cursor:pointer;box-shadow:0 12px 34px rgba(59,130,246,0.12);transition:transform .12s}
   .option:hover{transform:translateY(-3px)}
   .option.correct{background:var(--success) !important}
   .option.wrong{background:var(--danger) !important}
@@ -111,29 +100,6 @@
 
   .note{margin-top:14px;color:rgba(15,23,42,0.6);font-size:13px}
 
-  /* stars area */
-  .stars-wrap{display:flex;gap:8px;justify-content:center;align-items:center;margin-top:12px}
-  .star{font-size:28px; opacity:0.25; transition:transform .25s, opacity .25s}
-  .star.active{opacity:1; transform:scale(1.12)}
-
-  /* secret message */
-  #secretMessage {
-    display:none; position:fixed; top:50%; left:50%;
-    transform:translate(-50%,-50%);
-    background:white; padding:26px 28px; border-radius:18px; box-shadow:0 20px 60px rgba(0,0,0,0.18);
-    text-align:center; font-size:20px; font-weight:800; color:#e11d48; z-index:99999; animation:fadeIn 0.6s ease;
-    max-width:92%;
-  }
-  #secretMessage .close { margin-top:12px; padding:8px 12px; border-radius:10px; border:none; background:linear-gradient(90deg,var(--accent),#06b6d4); color:white; font-weight:800; cursor:pointer; }
-
-  @keyframes fadeIn {
-    from {opacity:0; transform:translate(-50%,-60%);}
-    to {opacity:1; transform:translate(-50%,-50%);}
-  }
-
-  /* confetti canvas full */
-  #confetti { position:fixed; left:0; top:0; width:100%; height:100%; pointer-events:none; z-index:9998 }
-
   @media (max-width:900px){
     .mode-card{max-width:100%}
     h1.title{font-size:26px}
@@ -143,41 +109,8 @@
 </style>
 </head>
 <body>
-  <canvas id="confetti"></canvas>
-
   <div class="stage">
     <main class="card" role="main" aria-labelledby="main-title">
-
-      <!-- WELCOME overlay -->
-      <div id="welcome" class="welcome">
-        <div class="resume-area" id="resumeArea" style="display:none">
-          <div class="resume-banner">يوجد حفظ سابق — <button id="resumeBtn" class="diff-btn">استكمال من حيث توقفت</button></div>
-        </div>
-
-        <h2>جاهزة نبدأ شوية إنجليزي؟ 😍</h2>
-        <p>يلا يا مزه نذاكر إنجليزي 💪❤️</p>
-        <button id="beginBtn" class="big-cta">ابدئي دلوقتي ✨📘</button>
-
-        <div class="small">
-          <label class="file-btn" for="fileInput" title="رفع ملف الكلمات الخاصة">
-            رفع كلمات خاصة 📁
-            <input id="fileInput" type="file" accept=".txt" style="display:none" aria-label="اختر ملف txt" />
-          </label>
-          <div style="width:10px"></div>
-          <div style="color:var(--muted);font-weight:700">اختر مستوى وسواء في نهاية تشوف مفاجأة 💌</div>
-        </div>
-
-        <div style="margin-top:12px">
-          <div style="font-weight:800;color:var(--muted)">اختر مستوى الصعوبة:</div>
-          <div class="difficulty" style="margin-top:8px">
-            <button class="diff-btn" data-diff="easy">سهل (10)</button>
-            <button class="diff-btn" data-diff="medium">متوسط (20)</button>
-            <button class="diff-btn" data-diff="hard">صعب (كل الكلمات)</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- main card content (under overlay) -->
       <div class="hearts" id="hearts"><span>❤</span><span>❤</span><span style="opacity:0.7">❤</span></div>
       <h1 id="main-title" class="title">أشطر بنوته ف الدنيا ❤️</h1>
       <div class="divider" id="divider" aria-hidden="true"></div>
@@ -185,8 +118,13 @@
       <p class="subtitle" id="subtitle">Ready to learn some English?</p>
 
       <!-- HOME controls -->
-      <div class="controls" id="homeControls" aria-label="home controls" style="display:none">
+      <div class="controls" id="homeControls" aria-label="home controls">
         <button id="startBtn" class="primary-btn" aria-label="ابدأ الاختبار">ابدأ الاختبار</button>
+
+        <label class="file-btn" for="fileInput" title="رفع ملف الكلمات الخاصة">
+          رفع الكلمات الخاصة 📁
+          <input id="fileInput" type="file" accept=".txt" style="display:none" aria-label="اختر ملف txt" />
+        </label>
       </div>
 
       <!-- MODE selection -->
@@ -227,19 +165,10 @@
         </div>
 
         <div id="feedback" aria-live="assertive"></div>
+        <button id="homeBtnFixed" class="btn-home" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999;">
+  🏠 رجوع للصفحة الرئيسية
+</button>
 
-        <div class="stars-wrap" id="starsWrap" title="نجوم الإنجاز">
-          <div class="star" id="star1">⭐</div>
-          <div class="star" id="star2">⭐</div>
-          <div class="star" id="star3">⭐</div>
-          <div class="star" id="star4">⭐</div>
-          <div class="star" id="star5">⭐</div>
-        </div>
-
-        <div class="flex-row" style="margin-top:12px">
-          <button id="homeBtnFixed" class="btn-home" style="">🏠 رجوع للصفحة الرئيسية</button>
-          <button id="saveBtn" class="btn-ghost">💾 حفظ التقدّم</button>
-        </div>
       </section>
 
       <!-- review -->
@@ -257,13 +186,6 @@
     </main>
   </div>
 
-  <!-- SECRET MESSAGE -->
-  <div id="secretMessage" role="dialog" aria-modal="true" aria-hidden="true">
-    أنا فخور بيكي أوي أوي يا قطتي ❤️<br>
-    وشايفك أشطر بنوته في العالم كله 🥰
-    <div><button class="close" id="secretClose">حلو! ❤️</button></div>
-  </div>
-
 <script>
 /* ========= state ========= */
 let originalWords = []; // [{en,ar},...]
@@ -271,21 +193,12 @@ let words = [];         // current round words
 let current = 0;
 let mistakes = [];      // collects wrong answers (can contain duplicates across rounds)
 let mode = null;        // "mc" or "type"
-let correctCount = 0;
-let starsEarned = 0;
-let difficulty = 'medium'; // default
-const localKey = 'lina_quiz_v1_state';
-
 const msgsCorrect = ["أشطر لينا ❤️","شطوره يا بطتي ❤️","شطوره يا قطتي ❤️","ايه الشطارة دي يا مزتي ❤️"];
 const msgsWrong = ["نركز يا قطتي ❤️","فيه احسن يا مزه ❤️","عادي يا حبيبي نحفظ تاني ❤️"];
 
 /* ====== elements ====== */
 const fileInput = document.getElementById('fileInput');
-const beginBtn = document.getElementById('beginBtn');
-const welcome = document.getElementById('welcome');
-const resumeArea = document.getElementById('resumeArea');
-const resumeBtn = document.getElementById('resumeBtn');
-const beginDiffButtons = document.querySelectorAll('.diff-btn[data-diff]');
+const startBtn = document.getElementById('startBtn');
 const homeControls = document.getElementById('homeControls');
 const modesSection = document.getElementById('modesSection');
 const startMC = document.getElementById('startMC');
@@ -303,19 +216,33 @@ const reviewBlock = document.getElementById('reviewBlock');
 const reviewList = document.getElementById('reviewList');
 const retryBtn = document.getElementById('retryBtn');
 const homeBtn = document.getElementById('homeBtn');
+// زرار الرجوع الثابت في كل الصفحات
 const homeBtnFixed = document.getElementById('homeBtnFixed');
-const startBtn = document.getElementById('startBtn');
-const speakQuestionBtn = document.getElementById('speakQuestion');
-const finalMsg = document.getElementById('finalMsg');
-const secretMessage = document.getElementById('secretMessage');
-const secretClose = document.getElementById('secretClose');
-const saveBtn = document.getElementById('saveBtn');
-const starsWrap = document.getElementById('starsWrap');
-const starEls = [document.getElementById('star1'),document.getElementById('star2'),document.getElementById('star3'),document.getElementById('star4'),document.getElementById('star5')];
-const confettiCanvas = document.getElementById('confetti');
-const resumeAvailable = checkSavedState();
+homeBtnFixed.addEventListener('click', ()=>{
+  // إرجاع كل حاجة لحالة البداية
+  originalWords = originalWords.length ? originalWords.slice() : defaultWords.slice();
+  words = [];
+  mistakes = [];
+  current = 0;
+  mode = null;
+  document.getElementById('hearts').style.display='flex';
+  document.getElementById('icon-book').style.display='block';
+  document.getElementById('subtitle').style.display='block';
+  document.getElementById('divider').style.display='block';
+  document.getElementById('main-title').style.display='block';
+  document.getElementById('homeControls').style.display='flex';
+  document.getElementById('modesSection').style.display='none';
+  document.getElementById('quizBlock').style.display='none';
+  document.getElementById('reviewBlock').style.display='none';
+  document.getElementById('finalMsg').style.display='none';
+  feedbackEl.innerText = '';
+  updateProgressBar(0, originalWords.length);
+  window.scrollTo({top:0, behavior:"smooth"});
+});
 
-/* ====== default words ====== */
+const finalMsg = document.getElementById('finalMsg');
+const speakQuestionBtn = document.getElementById('speakQuestion');
+
 const defaultWords = [
   { en: "duty", ar: "واجب - وظيفة" },
   { en: "emergency", ar: "حالة طوارئ" },
@@ -365,77 +292,23 @@ const defaultWords = [
   { en: "worth", ar: "يستحق" },
   { en: "yet", ar: "ما زال - بعد" }
 ];
-
 /* ====== utility ====== */
-function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]] } return a; }
-function dedupeKeepOrder(arr){ const seen=new Set(); const out=[]; arr.forEach(it=>{ if(!it) return; const key=`${it.en}|||${it.ar}`; if(!seen.has(key)){ seen.add(key); out.push(it); }}); return out; }
-function checkSavedState(){ try{ const s = localStorage.getItem(localKey); return !!s; }catch(e){ return false; }}
-
-/* ====== WebAudio simple sounds for correct/wrong ====== */
-const audioCtx = (typeof AudioContext !== 'undefined') ? new AudioContext() : null;
-function playTone(freq, type='sine', duration=0.12, gain=0.12){
-  if(!audioCtx) return;
-  const o = audioCtx.createOscillator();
-  const g = audioCtx.createGain();
-  o.type = type;
-  o.frequency.value = freq;
-  g.gain.value = gain;
-  o.connect(g); g.connect(audioCtx.destination);
-  o.start();
-  o.stop(audioCtx.currentTime + duration);
-}
-function playCorrect(){
-  // quick arpeggio
-  playTone(880,'sine',0.08,0.08);
-  setTimeout(()=>playTone(1100,'sine',0.08,0.06),70);
-}
-function playWrong(){
-  playTone(220,'sawtooth',0.18,0.12);
+function shuffle(a){ return a.sort(()=>Math.random()-0.5); }
+function dedupeKeepOrder(arr){
+  const seen = new Set(); const out = [];
+  arr.forEach(it=>{
+    if(!it) return;
+    const key = `${it.en}|||${it.ar}`;
+    if(!seen.has(key)){ seen.add(key); out.push(it); }
+  });
+  return out;
 }
 
-/* ====== confetti simple implementation ====== */
-const confettiCtx = confettiCanvas.getContext ? confettiCanvas.getContext('2d') : null;
-let confettiParticles = [];
-function resizeCanvas(){ confettiCanvas.width = window.innerWidth; confettiCanvas.height = window.innerHeight; }
-window.addEventListener('resize',resizeCanvas); resizeCanvas();
-function spawnConfetti(amount=40){
-  confettiParticles = [];
-  for(let i=0;i<amount;i++){
-    confettiParticles.push({
-      x: Math.random()*confettiCanvas.width,
-      y: Math.random()*confettiCanvas.height - confettiCanvas.height/2,
-      vx: (Math.random()-0.5)*6,
-      vy: Math.random()*6+2,
-      size: Math.random()*8+6,
-      color: `hsl(${Math.random()*360} 75% 60%)`,
-      rot: Math.random()*360,
-      rotSpeed: (Math.random()-0.5)*10
-    });
-  }
-  requestAnimationFrame(confettiFrame);
-}
-let confettiFrameId = null;
-function confettiFrame(){
-  if(!confettiCtx) return;
-  confettiCtx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
-  for(let p of confettiParticles){
-    p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.rot += p.rotSpeed;
-    confettiCtx.save();
-    confettiCtx.translate(p.x,p.y);
-    confettiCtx.rotate(p.rot * Math.PI/180);
-    confettiCtx.fillStyle = p.color;
-    confettiCtx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
-    confettiCtx.restore();
-  }
-  confettiParticles = confettiParticles.filter(p=>p.y < confettiCanvas.height+50);
-  if(confettiParticles.length>0) confettiFrameId = requestAnimationFrame(confettiFrame);
-  else { confettiCtx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height); cancelAnimationFrame(confettiFrameId); confettiFrameId = null; }
-}
-
-/* ====== TTS (same as before, try to pick voice) ====== */
+/* ====== TTS ====== */
 function speak(text, langPref){
   if(!window.speechSynthesis) return;
   const utter = new SpeechSynthesisUtterance(text);
+  // pick a voice matching langPref if possible
   const voices = window.speechSynthesis.getVoices();
   let voice = null;
   if(langPref === 'en'){
@@ -446,8 +319,9 @@ function speak(text, langPref){
     utter.lang = voice ? voice.lang : 'ar-SA';
   }
   if(voice) utter.voice = voice;
-  utter.rate = 0.95; utter.pitch = 1;
-  window.speechSynthesis.cancel();
+  utter.rate = 0.95;
+  utter.pitch = 1;
+  window.speechSynthesis.cancel(); // stop previous
   window.speechSynthesis.speak(utter);
 }
 
@@ -473,158 +347,59 @@ fileInput.addEventListener('change', e=>{
     if(parsed.length===0){ alert('لم يتم العثور على كلمات صالحة في الملف'); return; }
     originalWords = parsed;
     alert(`تم تحميل ${originalWords.length} كلمة ✅`);
-    // update localStorage base words (optional)
-    saveState(); // save immediate
-    showHomeControls();
+    modesSection.style.display = 'none';
+    quizBlock.style.display = 'none';
+    reviewBlock.style.display = 'none';
+    feedbackEl.innerText = '';
+    updateProgressBar(0, originalWords.length);
   };
   reader.readAsText(f, 'UTF-8');
 });
 
-/* ====== resume check & welcome behavior ====== */
-function loadState(){
-  try{
-    const s = localStorage.getItem(localKey);
-    if(!s) return null;
-    const obj = JSON.parse(s);
-    return obj;
-  }catch(e){ return null; }
-}
-function saveState(){
-  try{
-    const obj = {
-      originalWords, words, current, mistakes, mode, correctCount, starsEarned, difficulty
-    };
-    localStorage.setItem(localKey, JSON.stringify(obj));
-  }catch(e){}
-}
-function clearState(){
-  try{ localStorage.removeItem(localKey); }catch(e){}
-}
-
-/* on load: populate defaults and show resume if available */
-originalWords = defaultWords.slice();
-updateProgressBar(0, originalWords.length);
-
-if(resumeAvailable){
-  resumeArea.style.display='block';
-  resumeBtn.addEventListener('click', ()=> {
-    const s = loadState();
-    if(!s) return;
-    originalWords = s.originalWords && s.originalWords.length ? s.originalWords : defaultWords.slice();
-    words = s.words || [];
-    current = s.current || 0;
-    mistakes = s.mistakes || [];
-    mode = s.mode || null;
-    correctCount = s.correctCount || 0;
-    starsEarned = s.starsEarned || 0;
-    difficulty = s.difficulty || 'medium';
-    // show directly mode selection or resume into quiz
-    if(mode){
-      // resume quiz
-      welcome.classList.add('hidden');
-      setTimeout(()=> welcome.style.display='none',450);
-      showQuizDirectly();
-    } else {
-      // move to modes
-      welcome.classList.add('hidden');
-      setTimeout(()=> welcome.style.display='none',450);
-      setTimeout(()=> { modesSection.style.display='flex'; },500);
-    }
-  });
-}
-
-/* difficulty buttons on welcome */
-beginDiffButtons.forEach(btn=>{
-  if(!btn.dataset.diff) return;
-  btn.addEventListener('click', ()=>{
-    difficulty = btn.dataset.diff;
-    // highlight selection visually
-    beginDiffButtons.forEach(b=>b.style.borderColor='rgba(37,99,235,0.12)');
-    btn.style.borderColor = 'var(--accent)';
-  });
-});
-
-/* welcome begin */
-beginBtn.addEventListener('click', ()=>{
-  showHomeControls();
-  welcome.classList.add('hidden');
-  setTimeout(()=> welcome.style.display='none',450);
-});
-
-/* show home controls */
-function showHomeControls(){
-  document.getElementById('hearts').style.display='flex';
-  document.getElementById('icon-book').style.display='block';
-  document.getElementById('subtitle').style.display='block';
-  document.getElementById('divider').style.display='block';
-  document.getElementById('main-title').style.display='block';
-  homeControls.style.display='flex';
-  modesSection.style.display='none';
-  quizBlock.style.display='none';
-  reviewBlock.style.display='none';
-  feedbackEl.innerText = '';
-  updateProgressBar(0, originalWords.length);
-}
-
-/* ====== start buttons from home ====== */
+/* ====== home start (use default words if none uploaded) ====== */
 startBtn.addEventListener('click', ()=>{
-  if(!originalWords || originalWords.length===0) originalWords = defaultWords.slice();
+  // if no uploaded file, use defaults but still show modes
+  if(!originalWords || originalWords.length===0){
+    originalWords = defaultWords.slice();
+  }
+  // hide header decorations and show mode selection
   document.getElementById('hearts').style.display='none';
   document.getElementById('icon-book').style.display='none';
   document.getElementById('subtitle').style.display='none';
   document.getElementById('divider').style.display='none';
   document.getElementById('main-title').style.display='none';
+
   homeControls.style.display='none';
   modesSection.style.display='flex';
 });
 
-/* mode start */
+/* ====== start specific modes ====== */
 startMC.addEventListener('click', ()=>{
   mode = 'mc';
-  beginRound(pickWordsByDifficulty());
+  beginRound(originalWords.slice());
 });
 startType.addEventListener('click', ()=>{
   mode = 'type';
-  beginRound(pickWordsByDifficulty());
+  beginRound(originalWords.slice());
 });
-function pickWordsByDifficulty(){
-  let list = originalWords.slice();
-  if(difficulty === 'easy') list = shuffle(list).slice(0, Math.min(10, list.length));
-  else if(difficulty === 'medium') list = shuffle(list).slice(0, Math.min(20, list.length));
-  else list = list.slice();
-  return list;
-}
 
-/* begin round */
+/* ====== start a round with a list of words ====== */
 function beginRound(list){
   words = list.slice();
   current = 0;
   mistakes = [];
-  feedbackEl.innerText = '';
   modesSection.style.display='none';
   reviewBlock.style.display='none';
   finalMsg.style.display='none';
   quizBlock.style.display='block';
   typeArea.style.display = (mode==='type') ? 'block' : 'none';
   optionsEl.innerHTML = '';
-  correctCount = 0;
-  starsEarned = 0;
-  updateStars();
+  feedbackEl.innerText = '';
   updateProgressBar(current, words.length);
   showQuestion();
-  saveState();
 }
 
-/* direct resume into quiz (if saved had mode) */
-function showQuizDirectly(){
-  quizBlock.style.display='block';
-  typeArea.style.display = (mode==='type') ? 'block' : 'none';
-  updateStars();
-  updateProgressBar(current, words.length || originalWords.length);
-  showQuestion();
-}
-
-/* progress */
+/* ====== progress ====== */
 function updateProgressBar(idx, total){
   const tot = total || (originalWords.length || 1);
   const cur = Math.min(idx+1, tot);
@@ -633,7 +408,7 @@ function updateProgressBar(idx, total){
   progressBar.style.width = pct + '%';
 }
 
-/* showQuestion */
+/* ====== show question ====== */
 function showQuestion(){
   if(current >= words.length){
     quizBlock.style.display = 'none';
@@ -643,8 +418,10 @@ function showQuestion(){
   updateProgressBar(current, words.length);
   const q = words[current];
   if(mode === 'mc'){
+    // show English and four Arabic options
     const ask = q.en;
     questionText.innerText = `Question: "${ask}"`;
+    // build options: correct arabic + 3 random arabics from full set
     let opts = [q.ar];
     while(opts.length < 4){
       const pick = originalWords[Math.floor(Math.random()*originalWords.length)].ar;
@@ -662,61 +439,55 @@ function showQuestion(){
     typeArea.style.display='none';
     typeInput.value = '';
     typeInput.blur();
-    // speak english
+    // speak English word automatically (optional)
     speak(ask,'en');
-    animateQuestionIn();
   } else if(mode === 'type'){
+    // show Arabic and input expects english
     questionText.innerText = q.ar;
     optionsEl.innerHTML = '';
     typeArea.style.display='block';
     typeInput.value = '';
     typeInput.focus();
+    // speak Arabic meaning automatically
     speak(q.ar,'ar');
-    animateQuestionIn();
   }
-  saveState();
 }
 
-/* question animation */
-function animateQuestionIn(){
-  questionEl.style.transform = 'translateY(-6px)';
-  setTimeout(()=> questionEl.style.transform = 'translateY(0)',220);
-}
-
-/* play question */
+/* play question button */
 speakQuestionBtn.addEventListener('click', ()=>{
   const q = words[current];
   if(!q) return;
-  if(mode === 'mc') speak(q.en,'en'); else speak(q.ar,'ar');
+  if(mode === 'mc'){
+    speak(q.en,'en');
+  } else {
+    speak(q.ar,'ar');
+  }
 });
 
-/* MC handler */
+/* ====== MC handler ====== */
 function handleMCChoice(el, chosen, q){
   const options = Array.from(document.querySelectorAll('.option'));
   options.forEach(o => o.style.pointerEvents='none');
   if(chosen === q.ar){
     el.classList.add('correct');
     feedbackEl.innerText = msgsCorrect[Math.floor(Math.random()*msgsCorrect.length)];
-    playCorrect();
-    correctCount++;
-    checkForStar();
   } else {
     el.classList.add('wrong');
+    // highlight correct
     options.forEach(o => { if(o.textContent === q.ar) o.classList.add('correct'); });
     feedbackEl.innerText = msgsWrong[Math.floor(Math.random()*msgsWrong.length)];
-    playWrong();
     mistakes.push(q);
   }
-  // speak correct arabic for reinforcement
+  // speak correct answer (arabic) for reinforcement
   setTimeout(()=>{
     if(chosen !== q.ar) speak(q.ar,'ar');
     current++;
     feedbackEl.innerText = '';
     showQuestion();
-  },900);
+  },1500);
 }
 
-/* typing handler */
+/* ====== Typing handler ====== */
 typeInput.addEventListener('keydown', function(e){
   if(e.key === 'Enter'){
     e.preventDefault();
@@ -731,13 +502,11 @@ function handleTyping(val){
   const given = val.trim().toLowerCase();
   if(given === correct){
     feedbackEl.innerText = msgsCorrect[Math.floor(Math.random()*msgsCorrect.length)];
-    playCorrect();
+    // optional: speak english correct to reinforce
     speak(q.en,'en');
-    correctCount++;
-    checkForStar();
   } else {
     feedbackEl.innerText = msgsWrong[Math.floor(Math.random()*msgsWrong.length)];
-    playWrong();
+    // show correct english briefly by speaking it and add to mistakes
     speak(q.en,'en');
     mistakes.push(q);
   }
@@ -746,52 +515,20 @@ function handleTyping(val){
     current++;
     feedbackEl.innerText = '';
     showQuestion();
-  },900);
+  },1200);
 }
 
-/* check for stars (every 5 correct) */
-function checkForStar(){
-  const newStars = Math.floor(correctCount / 5);
-  if(newStars > starsEarned){
-    const gained = newStars - starsEarned;
-    starsEarned = newStars;
-    // animate next star(s)
-    for(let i=0;i<gained;i++){
-      const idx = Math.min(starEls.length-1, starsEarned-1-i);
-      if(starEls[idx]) {
-        starEls[idx].classList.add('active');
-        // small pulse
-        starEls[idx].style.transform = 'scale(1.2)';
-        setTimeout(()=> starEls[idx].style.transform = 'scale(1)',300);
-      }
-    }
-    // confetti
-    spawnConfetti(60);
-  }
-  updateStars();
-  saveState();
-}
-function updateStars(){
-  for(let i=0;i<starEls.length;i++){
-    if(i < starsEarned) starEls[i].classList.add('active'); else starEls[i].classList.remove('active');
-  }
-}
-
-/* review / retry / home */
+/* ====== Review / retry / home ====== */
 function showReview(){
   reviewBlock.style.display = 'block';
   const unique = dedupeKeepOrder(mistakes);
   if(unique.length === 0){
     reviewList.innerHTML = `<div class="review-item" style="justify-content:center">برافو! مفيش ولا غلطة 👏❤️</div>`;
     finalMsg.style.display = 'block';
-    // show secret button when final visible
-    showSecretButton();
-    // confetti / celebration
-    spawnConfetti(120);
   } else {
     reviewList.innerHTML = unique.map(u => 
       `<div class="review-item">
-         <div style="text-align:right">${u.en} → <span class="mean">${u.ar}</span></div>
+         <div>${u.en} → <span class="mean">${u.ar}</span></div>
          <div>
            <button class="play-icon" data-lang="en" data-en="${u.en}" title="اسمع الانجليزي">🔊</button>
            <button class="play-icon" data-lang="ar" data-ar="${u.ar}" title="اسمع العربي">🔈</button>
@@ -799,45 +536,40 @@ function showReview(){
        </div>`
     ).join('');
     finalMsg.style.display = 'none';
+    // attach play handlers
+    document.querySelectorAll('.play-icon').forEach(btn=>{
+      btn.addEventListener('click', ()=> {
+        const lang = btn.getAttribute('data-lang');
+        if(lang === 'en') speak(btn.getAttribute('data-en'),'en');
+        else speak(btn.getAttribute('data-ar'),'ar');
+      });
+    });
   }
   retryBtn.style.display = unique.length > 0 ? 'inline-block' : 'none';
-  // attach play handlers
-  document.querySelectorAll('.play-icon').forEach(btn=>{
-    btn.addEventListener('click', ()=> {
-      const lang = btn.getAttribute('data-lang');
-      if(lang === 'en') speak(btn.getAttribute('data-en'),'en');
-      else speak(btn.getAttribute('data-ar'),'ar');
-    });
-  });
-  saveState();
 }
 
-/* retry logic */
+/* retry logic: re-run quiz with unique mistakes until corrected */
 retryBtn.addEventListener('click', ()=>{
   const unique = dedupeKeepOrder(mistakes);
   if(unique.length === 0){ alert('مفيش كلمات غلط 🎉'); return; }
   words = unique.slice();
   mistakes = [];
   current = 0;
-  quizBlock.style.display='block';
   reviewBlock.style.display='none';
+  quizBlock.style.display='block';
   feedbackEl.innerText = '';
   updateProgressBar(current, words.length);
   showQuestion();
 });
 
-/* home button returns to initial home screen */
-homeBtn.addEventListener('click', resetToHome);
-homeBtnFixed.addEventListener('click', resetToHome);
-function resetToHome(){
+/* home button returns to initial home screen to allow new file or reset */
+homeBtn.addEventListener('click', ()=>{
+  // reset and show home controls
   originalWords = originalWords.length ? originalWords.slice() : defaultWords.slice();
   words = [];
   mistakes = [];
   current = 0;
   mode = null;
-  correctCount = 0;
-  starsEarned = 0;
-  updateStars();
   document.getElementById('hearts').style.display='flex';
   document.getElementById('icon-book').style.display='block';
   document.getElementById('subtitle').style.display='block';
@@ -850,77 +582,23 @@ function resetToHome(){
   finalMsg.style.display='none';
   feedbackEl.innerText = '';
   updateProgressBar(0, originalWords.length);
-  clearState();
-}
-
-/* save button manual */
-saveBtn.addEventListener('click', ()=>{
-  saveState();
-  alert('تم حفظ التقدّم ✅');
 });
 
-/* start with keyboard Enter accessibility */
+/* allow keyboard shortcut Enter on main start (for accessibility) */
 document.addEventListener('keydown', (e)=>{
   if(e.key === 'Enter' && homeControls.style.display !== 'none'){
     startBtn.click();
   }
 });
 
-/* secret button logic */
-let secretBtn = null;
-function showSecretButton(){
-  // create once and append under finalMsg
-  if(secretBtn) { secretBtn.style.display = 'inline-block'; return; }
-  secretBtn = document.createElement('button');
-  secretBtn.textContent = '💌 من معاذ';
-  secretBtn.style.cssText = `display:inline-block; margin-top:10px; padding:10px 16px; border:none; border-radius:10px; background:linear-gradient(90deg,#3b82f6,#06b6d4); color:white; font-weight:800; cursor:pointer;`;
-  finalMsg.after(secretBtn);
-  secretBtn.addEventListener('click', ()=>{
-    secretMessage.style.display = 'block';
-    secretMessage.setAttribute('aria-hidden','false');
-    // optionally auto-hide after 6 seconds
-    setTimeout(()=> { secretMessage.style.display='none'; secretMessage.setAttribute('aria-hidden','true'); }, 6000);
-  });
-  // create also a close
-  secretClose.addEventListener('click', ()=> {
-    secretMessage.style.display='none';
-    secretMessage.setAttribute('aria-hidden','true');
-  });
-}
-
-/* allow keyboard shortcut for secret (Konami-style) - optional (not required but nice)
-   For simplicity: if user types "moaz" on keyboard, show secret (case-insensitive)
-*/
-let keyBuffer = '';
-window.addEventListener('keydown', e=>{
-  keyBuffer += e.key.toLowerCase();
-  if(keyBuffer.length > 10) keyBuffer = keyBuffer.slice(-10);
-  if(keyBuffer.includes('moaz') || keyBuffer.includes('معاذ')) {
-    secretMessage.style.display = 'block';
-    secretMessage.setAttribute('aria-hidden','false');
-    setTimeout(()=> { secretMessage.style.display='none'; secretMessage.setAttribute('aria-hidden','true'); }, 5000);
-    keyBuffer = '';
-  }
-});
-
-/* init: default words until user uploads */
+/* init: use default words until user uploads */
 originalWords = defaultWords.slice();
 updateProgressBar(0, originalWords.length);
 
-/* voices */
-if(window.speechSynthesis){ window.speechSynthesis.onvoiceschanged = ()=>{} }
-
-/* helper to show review when done is already in showQuestion */
-
-/* ensure everything saved on unload */
-window.addEventListener('beforeunload', ()=> { saveState(); });
-
-/* small helper to show modes from welcome if want (not necessary but safe) */
-document.querySelectorAll('.mode-start').forEach(btn=>{
-  btn.addEventListener('click', ()=> {
-    // nothing extra here; handled above
-  });
-});
+/* ensure voices loaded (some browsers need a small timeout to populate voices) */
+if(window.speechSynthesis){
+  window.speechSynthesis.onvoiceschanged = ()=>{ /* voices ready */ };
+}
 
 </script>
 </body>
