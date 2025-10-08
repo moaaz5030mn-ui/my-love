@@ -1,498 +1,865 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>أشطر بنوته ف الدنيا ❤️ — لينا الإصدار النهائي</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg-top:#e8f7ff;
-    --bg-bottom:#ffffff;
-    --primary:#2563eb;
-    --accent:#3b82f6;
+    /* ميكس ألوان: أزرق - أبيض - بنفسجي */
+    --bg-top: #eef6ff;
+    --bg-bottom: #ffffff;
+    --primary: #2563eb;
+    --accent: linear-gradient(90deg,#3b82f6,#7c3aed);
+    --accent-solid: #3b82f6;
     --muted:#64748b;
     --success:#16a34a;
     --danger:#ef4444;
     --card-bg: rgba(255,255,255,0.98);
     --text:#0f172a;
+    --pink:#ec4899;
   }
   *{box-sizing:border-box;margin:0;padding:0;font-family:"Cairo",sans-serif}
-  body,html{height:100%;background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom));color:var(--text);}
-  .stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
-  .card{width:100%;max-width:480px;background:var(--card-bg);border-radius:18px;padding:20px;text-align:center;box-shadow:0 20px 40px rgba(15,23,42,0.08);position:relative;overflow:hidden;}
-  h1.title{margin:6px 0 10px;font-size:28px;color:var(--primary);font-weight:700}
-  .divider{height:5px;width:120px;margin:10px auto;border-radius:6px;background:linear-gradient(90deg,#60a5fa,#34d399)}
-  .hearts{display:flex;gap:8px;justify-content:center;margin-bottom:6px}
-  .hearts span{font-size:18px;color:rgba(59,130,246,0.6)}
-  .icon-book{font-size:36px;color:#34d399;margin-bottom:10px}
-  .subtitle{margin:0 0 14px;color:rgba(15,23,42,0.6);font-size:14px}
-  .controls{display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;margin-bottom:14px}
-  .primary-btn{width:90%;max-width:360px;padding:12px 16px;border-radius:12px;border:none;background:linear-gradient(90deg,var(--accent),#06b6d4);color:white;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 10px 28px rgba(59,130,246,0.16);transition:transform .14s ease,box-shadow .14s ease;}
-  .primary-btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(59,130,246,0.22)}
-  .file-btn{width:90%;max-width:360px;padding:10px;border-radius:12px;border:1px solid rgba(37,99,235,0.12);background:transparent;color:var(--text);font-weight:700;cursor:pointer;font-size:14px}
-  .modes{display:flex;gap:12px;justify-content:center;margin-top:12px;flex-wrap:wrap;display:none}
-  .mode-card{flex:1 1 200px;max-width:240px;background:rgba(255,255,255,0.96);border-radius:12px;padding:16px;box-shadow:0 6px 20px rgba(2,6,23,0.04);text-align:center;}
-  .mode-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:24px}
-  .mc .mode-icon{background:rgba(59,130,246,0.12);color:var(--accent)}
-  .type .mode-icon{background:rgba(16,185,129,0.08);color:#10b981}
-  .mode-title{font-weight:800;font-size:18px;margin-bottom:6px}
-  .mode-desc{color:var(--muted);margin-bottom:10px;font-size:13px}
-  .mode-start{padding:8px 12px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent),#06b6d4);color:white;font-weight:800;cursor:pointer;font-size:14px}
-  .quiz{display:none;margin-top:14px}
-  #progressBarContainer{width:100%;background:#eef2ff;height:28px;border-radius:999px;overflow:hidden;position:relative;margin-bottom:10px}
-  #progressBar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#60a5fa);transition:width .45s ease}
-  #progressText{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;font-size:12px;text-shadow:0 1px 2px rgba(0,0,0,0.25)}
-  #question{font-size:16px;margin:12px 0;padding:10px;border-radius:10px;background:rgba(2,6,23,0.03);min-height:56px;display:flex;align-items:center;justify-content:center;gap:8px}
-  .speak-btn{background:transparent;border:none;font-size:16px;cursor:pointer;color:var(--primary)}
-  .options{display:flex;flex-direction:column;gap:10px;align-items:center;margin-bottom:10px}
-  .option{width:90%;max-width:360px;padding:10px 12px;border-radius:12px;background:var(--accent);color:white;font-weight:700;cursor:pointer;transition:transform .12s;box-shadow:0 8px 24px rgba(59,130,246,0.12)}
-  .option:hover{transform:translateY(-2px)}
-  .option.correct{background:var(--success)!important}
-  .option.wrong{background:var(--danger)!important}
-  .type-input{width:80%;max-width:360px;padding:10px;border-radius:10px;border:2px solid rgba(37,99,235,0.12);text-align:center;font-weight:700;font-size:14px;margin-bottom:10px}
-  #feedback{margin-top:8px;font-weight:800;min-height:24px;font-size:14px;text-align:center}
-  .review{display:none;margin-top:12px}
-  .review-list{max-height:300px;overflow:auto;margin:12px auto;width:92%;text-align:right}
-  .review-item{display:flex;justify-content:space-between;align-items:center;background:#f0f9f1;color:var(--success);font-size:16px;font-weight:900;padding:10px 12px;border-radius:10px;margin:6px 0}
-  .review-item .mean{color:var(--text);font-size:14px;font-weight:700;opacity:0.95;margin-left:6px}
-  .play-icon{background:transparent;border:none;font-size:16px;color:var(--primary);cursor:pointer;margin-left:6px}
-  .review-controls{display:flex;gap:8px;justify-content:center;margin-top:10px}
-  .btn-ghost{padding:8px 12px;border-radius:10px;border:1px solid rgba(37,99,235,0.12);background:transparent;cursor:pointer;font-weight:700}
-  .btn-home{padding:10px 14px;border-radius:12px;border:none;background:#64748b;color:white;font-weight:800;cursor:pointer}
-  .final-msg{display:none;margin-top:12px;font-size:18px;color:var(--primary);font-weight:900}
-  .note{margin-top:10px;color:rgba(15,23,42,0.6);font-size:12px;text-align:center}
+  html,body{height:100%}
+  body{
+    background: linear-gradient(180deg,var(--bg-top),var(--bg-bottom));
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* layout */
+  .stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:18px}
+  .card{
+    width:100%;max-width:980px;border-radius:18px;background:var(--card-bg);
+    box-shadow:0 30px 70px rgba(15,23,42,0.08);padding:28px;position:relative;overflow:hidden;
+    display:grid;grid-template-columns:1fr 420px;gap:22px;align-items:start;
+  }
+
+  /* left column (main) */
+  .main-area{padding:6px}
+  h1.title{margin:6px 0 12px;font-size:36px;color:var(--primary);font-weight:800}
+  .divider{height:8px;width:180px;margin:12px 0;border-radius:8px;background:linear-gradient(90deg,#60a5fa,#a78bfa)}
+  .subtitle{margin:6px 0 18px;color:rgba(15,23,42,0.6);font-size:15px}
+
+  .hearts-row{display:flex;gap:10px;align-items:center}
+  .hearts-row span{font-size:20px;color:rgba(59,130,246,0.7)}
+
+  /* controls */
+  .controls{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+  .primary-btn{
+    padding:14px 18px;border-radius:12px;border:none;
+    background:linear-gradient(90deg,#3b82f6,#7c3aed); color:white; font-size:18px;font-weight:800;
+    cursor:pointer; box-shadow:0 14px 36px rgba(59,130,246,0.12);
+  }
+  .file-btn{
+    padding:12px;border-radius:12px;border:1px solid rgba(37,99,235,0.12);background:transparent;color:var(--text);font-weight:700;cursor:pointer;font-size:16px;
+  }
+  .resume-banner{background:linear-gradient(90deg,#fef3c7,#fef08a); padding:8px 12px; border-radius:12px; font-weight:700; color:#92400e; display:inline-flex; gap:10px; align-items:center}
+
+  /* right column (compact card) */
+  .side{background:linear-gradient(180deg,rgba(255,255,255,0.95),rgba(255,255,255,0.98));border-radius:14px;padding:18px;box-shadow:0 8px 30px rgba(2,6,23,0.04)}
+  .mode-card{background:rgba(255,255,255,0.96);padding:12px;border-radius:12px;margin-bottom:12px;box-shadow:0 6px 20px rgba(2,6,23,0.04)}
+  .mode-card .mode-title{font-weight:800;margin-bottom:6px}
+  .mode-start{padding:8px 12px;border-radius:10px;border:none;background:linear-gradient(90deg,#3b82f6,#7c3aed);color:#fff;font-weight:800;cursor:pointer}
+
+  /* quiz area */
+  .quiz{margin-top:12px;display:none}
+  #progressBarContainer{width:100%;background:#eef2ff;height:34px;border-radius:999px;overflow:hidden;position:relative;margin-bottom:12px}
+  #progressBar{height:100%;width:0%;background:linear-gradient(90deg,#3b82f6,#60a5fa);transition:width .4s ease}
+  #progressText{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:800;color:white;text-shadow:0 1px 2px rgba(0,0,0,0.2)}
+
+  #question{font-size:18px;margin:12px 0;padding:14px;border-radius:12px;background:rgba(2,6,23,0.03);min-height:68px;display:flex;align-items:center;justify-content:center;gap:10px}
+  .speak-btn{background:transparent;border:none;font-size:20px;cursor:pointer;color:var(--primary)}
+  .options{display:flex;flex-direction:column;gap:12px;align-items:center;margin-bottom:12px}
+  .option{width:88%;max-width:520px;padding:12px 16px;border-radius:12px;background:#3b82f6;color:white;font-weight:800;cursor:pointer;box-shadow:0 12px 34px rgba(59,130,246,0.12);transition:transform .12s}
+  .option:hover{transform:translateY(-3px)}
+  .option.correct{background:var(--success) !important}
+  .option.wrong{background:var(--danger) !important}
+
+  .type-input{width:80%;max-width:520px;padding:12px;border-radius:10px;border:2px solid rgba(37,99,235,0.12);text-align:center;font-weight:800;font-size:16px}
+  #feedback{margin-top:10px;font-weight:800;min-height:28px}
+
+  /* stars area */
+  .stars-wrap{display:flex;gap:8px;justify-content:center;align-items:center;margin-top:12px}
+  .star{font-size:28px; opacity:0.25; transition:transform .25s, opacity .25s}
+  .star.active{opacity:1; transform:scale(1.12)}
+
+  /* review */
+  .review{display:none;margin-top:18px}
+  .review-list{max-height:360px;overflow:auto;margin:12px auto;width:92%;max-width:760px;text-align:right}
+  .review-item{display:flex;justify-content:space-between;align-items:center;background:#f0f9f1;color:var(--success);font-size:18px;font-weight:900;padding:12px 14px;border-radius:10px;margin:8px 0}
+  .review-item .mean{color:var(--text);font-size:16px;font-weight:700;opacity:0.95;margin-left:10px}
+  .play-icon{background:transparent;border:none;font-size:18px;color:var(--primary);cursor:pointer;margin-left:8px}
+
+  .review-controls{display:flex;gap:12px;justify-content:center;margin-top:12px}
+  .btn-ghost{padding:10px 14px;border-radius:10px;border:1px solid rgba(37,99,235,0.12);background:transparent;cursor:pointer;font-weight:700}
+  .btn-home{padding:12px 16px;border-radius:12px;border:none;background:#64748b;color:white;font-weight:800;cursor:pointer}
+
+  .final-msg{display:none;margin-top:16px;font-size:20px;color:var(--primary);font-weight:900}
+  .note{margin-top:14px;color:rgba(15,23,42,0.6);font-size:13px}
+
+  /* confetti canvas */
+  #confetti{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:9998}
+
+  /* secret and popup */
+  #secretBtn{position:fixed;bottom:22px;right:22px;background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;font-weight:800;border:none;border-radius:50px;padding:12px 18px;font-size:14px;box-shadow:0 8px 20px rgba(99,102,241,0.3);cursor:pointer;display:none;z-index:10001;transition:all .3s ease}
+  #lovePopup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#ffffff,#e9efff);border:2px solid #a78bfa;border-radius:16px;box-shadow:0 8px 40px rgba(37,99,235,0.15);padding:22px;width:340px;text-align:center;display:none;z-index:10002}
+  #lovePopup h3{color:#2563eb;font-size:20px;margin-bottom:10px}
+  #lovePopup p{color:#0f172a;font-size:16px;font-weight:800}
+  #closePopup{margin-top:12px;background:linear-gradient(90deg,#6366f1,#3b82f6);color:#fff;border:none;padding:8px 14px;border-radius:12px;cursor:pointer;font-weight:800}
+
+  /* hearts bg for animation */
+  .hearts-bg{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+  .heart{position:absolute;animation:float 8s linear infinite;opacity:0.2}
+  @keyframes float { 0% {transform:translateY(110vh) scale(.8);} 50%{opacity:1} 100%{transform:translateY(-10vh) scale(1.2);opacity:0} }
+
+  @media (max-width:980px){
+    .card{grid-template-columns:1fr;max-width:480px;padding:20px}
+    .side{order:2}
+  }
 </style>
 </head>
 <body>
-<div class="stage">
-<main class="card" role="main" aria-labelledby="main-title">
+  <canvas id="confetti"></canvas>
+  <div class="hearts-bg" id="hearts-bg" aria-hidden="true"></div>
 
-  <div class="hearts" id="hearts"><span>❤</span><span>❤</span><span style="opacity:0.7">❤</span></div>
-  <h1 id="main-title" class="title">أشطر بنوته ف الدنيا ❤️</h1>
-  <div class="divider" id="divider" aria-hidden="true"></div>
-  <div class="icon-book" id="icon-book">📘</div>
-  <p class="subtitle" id="subtitle">Ready to learn some English?</p>
+  <div class="stage">
+    <main class="card" role="main" aria-labelledby="main-title">
+      <div class="main-area">
+        <div class="hearts-row" aria-hidden="true"><span>❤</span><span>❤</span><span style="opacity:.7">❤</span></div>
+        <h1 id="main-title" class="title">أشطر بنوته ف الدنيا ❤️</h1>
+        <div class="divider" id="divider" aria-hidden="true"></div>
+        <p class="subtitle" id="subtitle">Ready to learn some English?</p>
 
-  <div class="controls" id="homeControls">
-    <button id="startBtn" class="primary-btn">ابدأ الاختبار</button>
-    <label class="file-btn" for="fileInput">رفع الكلمات الخاصة 📁
-      <input id="fileInput" type="file" accept=".txt" style="display:none">
-    </label>
+        <!-- HOME controls -->
+        <div class="controls" id="homeControls" aria-label="home controls">
+          <div id="resumeArea" style="display:none" class="resume-banner">يوجد حفظ سابق — <button id="resumeBtn" class="btn-ghost">استكمال من حيث توقفت</button></div>
+          <button id="startBtn" class="primary-btn" aria-label="ابدأ الاختبار">ابدأ الاختبار</button>
+          <label class="file-btn" for="fileInput" title="رفع ملف الكلمات الخاصة">
+            رفع كلمات خاصة 📁
+            <input id="fileInput" type="file" accept=".txt" style="display:none" aria-label="اختر ملف txt" />
+          </label>
+          <div class="note">ارفع ملف .txt بصيغة: <em>book=كتاب</em> أو <em>book كتاب</em> أو <em>book-كتاب</em>. الملف يجب أن يكون UTF-8 إذا فيه عربي.</div>
+        </div>
+
+        <!-- modes will be shown after start -->
+        <section class="modes" id="modesSection" aria-label="اختيار وضع الاختبار" style="display:none">
+          <div class="mode-card mc" role="article">
+            <div class="mode-title">Multiple Choice — اختيارات</div>
+            <div class="mode-desc">See an English word and choose the correct Arabic meaning from 4 options</div>
+            <button class="mode-start" id="startMC">ابدئي وضع الاختيارات 🎯</button>
+          </div>
+
+          <div class="mode-card type" role="article">
+            <div class="mode-title">Type the Word — كتابة</div>
+            <div class="mode-desc">See the Arabic meaning and type the correct English word</div>
+            <button class="mode-start" id="startType">ابدئي وضع الكتابة ✍️</button>
+          </div>
+        </section>
+
+        <!-- quiz block -->
+        <section class="quiz" id="quizBlock" aria-live="polite" style="display:none">
+          <div id="progressBarContainer"><div id="progressBar"></div><div id="progressText">0/0 سؤال</div></div>
+
+          <div id="question"><span id="questionText">السؤال سيظهر هنا</span>
+            <button id="speakQuestion" class="speak-btn" title="اسمع النطق">🔊</button>
+          </div>
+
+          <div class="options" id="options"></div>
+
+          <div id="typeArea" style="display:none">
+            <input id="typeInput" class="type-input" type="text" placeholder="اكتبي الكلمة بالإنجليزي ثم اضغطي Enter" />
+          </div>
+
+          <div id="feedback" aria-live="assertive"></div>
+
+          <div class="stars-wrap" id="starsWrap" title="نجوم الإنجاز" style="margin-top:10px">
+            <div class="star" id="star1">⭐</div>
+            <div class="star" id="star2">⭐</div>
+            <div class="star" id="star3">⭐</div>
+            <div class="star" id="star4">⭐</div>
+            <div class="star" id="star5">⭐</div>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+            <button id="saveBtn" class="btn-ghost">💾 حفظ التقدّم</button>
+            <button id="homeBtnFixed" class="btn-home">🏠 رجوع للصفحة الرئيسية</button>
+          </div>
+        </section>
+
+        <!-- review -->
+        <section class="review" id="reviewBlock" aria-live="polite" style="display:none">
+          <h3>الكلمات اللي غلطتي فيها 📘</h3>
+          <div class="review-list" id="reviewList"></div>
+          <div class="review-controls">
+            <button id="retryBtn" class="primary-btn" style="display:none">إعادة الاختبار على الكلمات الغلط</button>
+            <button id="homeBtn" class="btn-home">رجوع للصفحة الرئيسية</button>
+          </div>
+          <div class="final-msg" id="finalMsg" style="display:none">وااااااااو 😍 شطورة أوي أوي والله ❤️</div>
+        </section>
+      </div>
+
+      <!-- side (compact) -->
+      <aside class="side" aria-hidden="false">
+        <div style="text-align:center;margin-bottom:12px">
+          <div style="font-weight:800;color:var(--muted);margin-bottom:8px">اختر وضع / ابدئي</div>
+          <div style="color:var(--muted);font-size:13px">اللون: مزيج أزرق-أبيض-بنفسجي (عصري)</div>
+        </div>
+
+        <div style="margin-bottom:12px">
+          <div style="font-weight:800;color:var(--muted);margin-bottom:6px">حالة الحفظ</div>
+          <div id="saveStatus" style="font-size:14px;color:var(--muted)">لم يتم الحفظ بعد</div>
+        </div>
+
+        <div style="margin-top:8px">
+          <div style="font-weight:800;color:var(--muted);margin-bottom:6px">مساعدة</div>
+          <div style="font-size:13px;color:var(--muted)">ادخلي ملف كلمات ثم اختاري الوضع — الاختيارات أو الكتابة</div>
+        </div>
+      </aside>
+
+    </main>
   </div>
 
-  <section class="modes" id="modesSection">
-    <div class="mode-card mc">
-      <div class="mode-icon">✓</div>
-      <div class="mode-title">Multiple Choice</div>
-      <div class="mode-desc">See an English word and choose the correct Arabic meaning from 4 options</div>
-      <button class="mode-start" id="startMC">ابدئي وضع الاختيارات 🎯</button>
-    </div>
-    <div class="mode-card type">
-      <div class="mode-icon">✍️</div>
-      <div class="mode-title">Type the Word</div>
-      <div class="mode-desc">See the Arabic meaning and type the correct English word</div>
-      <button class="mode-start" id="startType">ابدئي وضع الكتابة ✍️</button>
-    </div>
-  </section>
-
-  <section class="quiz" id="quizBlock">
-    <div id="progressBarContainer">
-      <div id="progressBar"></div>
-      <div id="progressText">0/0 سؤال</div>
-    </div>
-    <div id="question"><span id="questionText"></span>
-      <button id="speakQuestion" class="speak-btn">🔊</button>
-    </div>
-    <div class="options" id="options"></div>
-    <div id="typeArea" style="display:none">
-      <input id="typeInput" class="type-input" placeholder="اكتبي الكلمة بالإنجليزي ثم اضغطي Enter">
-    </div>
-    <div id="feedback"></div>
-    <div class="flex-row">
-      <button id="homeBtnFixed" class="btn-home">🏠 رجوع للصفحة الرئيسية</button>
-    </div>
-  </section>
-
-  <section class="review" id="reviewBlock">
-    <h3>الكلمات اللي غلطتي فيها 📘</h3>
-    <div class="review-list" id="reviewList"></div>
-    <div class="review-controls">
-      <button id="retryBtn" class="primary-btn">إعادة الاختبار على الكلمات الغلط</button>
-      <button id="homeBtn" class="btn-home">رجوع للصفحة الرئيسية</button>
-    </div>
-    <div class="final-msg" id="finalMsg">وااااااااو 😍 شطورة أوي ❤️</div>
-  </section>
-
-  <p class="note">ارفع ملف .txt بصيغة: <em>book=كتاب</em> أو <em>book كتاب</em> أو <em>book-كتاب</em></p>
-
-</main>
-</div>
+  <!-- secret button & love popup -->
+  <button id="secretBtn" aria-hidden="true">💌 من زوزو</button>
+  <div id="lovePopup" role="dialog" aria-hidden="true">
+    <h3>رسالة من زوزو 💖</h3>
+    <p id="loveText">بحبككككككككككككككك والله 💖</p>
+    <button id="closePopup">إغلاق</button>
+  </div>
 
 <script>
-/* ========= JS مختصر + نهائي ========= */
-let defaultWords=[{en:"duty",ar:"واجب - وظيفة"},{en:"emergency",ar:"حالة طوارئ"},{en:"flood",ar:"فيضان"}];
-let originalWords=defaultWords.slice(), words=[], current=0, mistakes=[], mode=null;
-const startBtn=document.getElementById('startBtn'), homeControls=document.getElementById('homeControls');
-const modesSection=document.getElementById('modesSection'), startMC=document.getElementById('startMC'), startType=document.getElementById('startType');
-const quizBlock=document.getElementById('quizBlock'), questionText=document.getElementById('questionText'), optionsEl=document.getElementById('options');
-const typeArea=document.getElementById('typeArea'), typeInput=document.getElementById('typeInput'), feedbackEl=document.getElementById('feedback');
-const progressBar=document.getElementById('progressBar'), progressText=document.getElementById('progressText'), reviewBlock=document.getElementById('reviewBlock'), reviewList=document.getElementById('reviewList');
-const retryBtn=document.getElementById('retryBtn'), homeBtnFixed=document.getElementById('homeBtnFixed'), speakQuestionBtn=document.getElementById('speakQuestion');
+/* ======= JS: كامل ومركّز داخل DOMContentLoaded ======= */
+document.addEventListener('DOMContentLoaded', () => {
 
-function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a;}
-function showProgress(){let tot=Math.max(words.length,1),cur=Math.min(current+1,tot);progressText.innerText=cur+"/"+tot+" سؤال";progressBar.style.width=Math.round((current/tot)*100)+'%';}
-function speak(text,lang){if(!window.speechSynthesis)return;const u=new SpeechSynthesisUtterance(text);u.lang=lang==='en'?'en-US':'ar-SA';window.speechSynthesis.cancel();window.speechSynthesis.speak(u);}
-function showQuestion(){if(current>=words.length){quizBlock.style.display='none';showReview();return;}showProgress();const q=words[current];if(mode==='mc'){questionText.innerText=q.en;let opts=[q.ar];while(opts.length<4){let pick=originalWords[Math.floor(Math.random()*originalWords.length)].ar;if(!opts.includes(pick))opts.push(pick);}opts=shuffle(opts);optionsEl.innerHTML='';opts.forEach(opt=>{let el=document.createElement('div');el.className='option';el.textContent=opt;el.onclick=()=>handleMCChoice(el,opt,q);optionsEl.appendChild(el);});typeArea.style.display='none';typeInput.value='';speak(q.en,'en');}else{questionText.innerText=q.ar;optionsEl.innerHTML='';typeArea.style.display='block';typeInput.value='';typeInput.focus();speak(q.ar,'ar');}}
-function handleMCChoice(el,chosen,q){Array.from(optionsEl.children).forEach(o=>o.style.pointerEvents='none');if(chosen===q.ar){el.classList.add('correct');}else{el.classList.add('wrong');Array.from(optionsEl.children).forEach(o=>{if(o.textContent===q.ar)o.classList.add('correct')});mistakes.push(q);}setTimeout(()=>{current++;showQuestion();},900);}
-typeInput.addEventListener('keydown',e=>{if(e.key==='Enter'){let val=typeInput.value.trim();if(val==='')return;handleTyping(val);}});function handleTyping(val){let q=words[current];if(val.toLowerCase()===q.en.toLowerCase()){feedbackEl.innerText='صح!';}else{feedbackEl.innerText='غلط!';mistakes.push(q);}current++;feedbackEl.innerText='';showQuestion();}
-function showReview(){reviewBlock.style.display='block';let unique=[...new Map(mistakes.map(i=>[i.en,i])).values()];reviewList.innerHTML='';if(unique.length===0){reviewList.innerHTML='<div>مبروك! لا توجد أخطاء 👏</div>';}else{unique.forEach(u=>{let div=document.createElement('div');div.className='review-item';div.innerHTML=`${u.en} → ${u.ar}`;reviewList.appendChild(div);});}}
-startBtn.onclick=()=>{homeControls.style.display='none';modesSection.style.display='flex';};
-startMC.onclick=()=>{mode='mc';words=originalWords.slice();current=0;mistakes=[];quizBlock.style.display='block';modesSection.style.display='none';showQuestion();}
-startType.onclick=()=>{mode='type';words=originalWords.slice();current=0;mistakes=[];quizBlock.style.display='block';modesSection.style.display='none';showQuestion();}
-homeBtnFixed.onclick=()=>{quizBlock.style.display='none';reviewBlock.style.display='none';homeControls.style.display='flex';modesSection.style.display='none';feedbackEl.innerText='';current=0;words=[];mistakes=[];}
-</script>
-<!-- ====== الزر السري من زوزو 💌 ====== -->
-<style>
-  #secretBtn {
-    position: fixed;
-    bottom: 22px;
-    right: 22px;
-    background: linear-gradient(135deg, #60a5fa, #a78bfa);
-    color: white;
-    font-weight: 800;
-    border: none;
-    border-radius: 50px;
-    padding: 12px 18px;
-    font-size: 14px;
-    box-shadow: 0 8px 20px rgba(99,102,241,0.3);
-    cursor: pointer;
-    display: none;
-    z-index: 9999;
-    transition: all 0.4s ease;
-  }
-  #secretBtn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 10px 28px rgba(59,130,246,0.4);
-  }
-  #lovePopup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: linear-gradient(135deg, #ffffff, #e0e7ff);
-    border: 2px solid #a78bfa;
-    border-radius: 16px;
-    box-shadow: 0 8px 40px rgba(37,99,235,0.25);
-    padding: 25px;
-    width: 280px;
-    text-align: center;
-    display: none;
-    z-index: 10000;
-  }
-  #lovePopup h3 {
-    color: #2563eb;
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  #lovePopup p {
-    color: #1e293b;
-    font-size: 16px;
-    font-weight: 700;
-  }
-  #closePopup {
-    margin-top: 12px;
-    background: linear-gradient(90deg, #6366f1, #3b82f6);
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 800;
-    transition: all 0.3s ease;
-  }
-  #closePopup:hover {
-    transform: scale(1.05);
-  }
-</style>
+  /* ===== elements ===== */
+  const fileInput = document.getElementById('fileInput');
+  const startBtn = document.getElementById('startBtn');
+  const homeControls = document.getElementById('homeControls');
+  const modesSection = document.getElementById('modesSection');
+  const startMC = document.getElementById('startMC');
+  const startType = document.getElementById('startType');
+  const quizBlock = document.getElementById('quizBlock');
+  const questionText = document.getElementById('questionText');
+  const optionsEl = document.getElementById('options');
+  const typeArea = document.getElementById('typeArea');
+  const typeInput = document.getElementById('typeInput');
+  const feedbackEl = document.getElementById('feedback');
+  const progressBar = document.getElementById('progressBar');
+  const progressText = document.getElementById('progressText');
+  const reviewBlock = document.getElementById('reviewBlock');
+  const reviewList = document.getElementById('reviewList');
+  const retryBtn = document.getElementById('retryBtn');
+  const homeBtn = document.getElementById('homeBtn');
+  const homeBtnFixed = document.getElementById('homeBtnFixed');
+  const saveBtn = document.getElementById('saveBtn');
+  const resumeArea = document.getElementById('resumeArea');
+  const resumeBtn = document.getElementById('resumeBtn');
+  const saveStatus = document.getElementById('saveStatus');
+  const speakBtn = document.getElementById('speakQuestion');
 
-<button id="secretBtn">💌 من زوزو</button>
-
-<div id="lovePopup">
-  <h3>رسالة من زوزو 💖</h3>
-  <p id="loveText">بحبككككككككككككككك والله 💖</p>
-  <button id="closePopup">إغلاق</button>
-</div>
-
-<script>
   const secretBtn = document.getElementById('secretBtn');
   const lovePopup = document.getElementById('lovePopup');
   const loveText = document.getElementById('loveText');
   const closePopup = document.getElementById('closePopup');
 
+  const confettiCanvas = document.getElementById('confetti');
+  const confettiCtx = confettiCanvas.getContext ? confettiCanvas.getContext('2d') : null;
+
+  const starEls = [
+    document.getElementById('star1'),
+    document.getElementById('star2'),
+    document.getElementById('star3'),
+    document.getElementById('star4'),
+    document.getElementById('star5')
+  ];
+
+  /* ===== state ===== */
+  const localKey = 'lina_quiz_v1_state';
+  let originalWords = [];
+  let words = [];
+  let current = 0;
+  let mistakes = [];
+  let mode = null; // "mc" or "type"
+  let correctCount = 0;
+  let starsEarned = 0;
+
+  /* ===== messages (preserved) ===== */
+  const msgsCorrect = ["أشطر لينا ❤️","شطوره يا بطتي ❤️","شطوره يا قطتي ❤️","ايه الشطارة دي يا مزتي ❤️","شطوووووورة يا مزتي ❤️","بسم الله ما شاء الله 😍","خدي بوسة على الشطارة دي 😘"];
+  const msgsWrong = ["نركز يا قطتي ❤️","فيه احسن يا مزه ❤️","عادي يا حبيبي نحفظ تاني ❤️","عادي يا مزتي نذاكر تاني 💪","فيه أحسن يا قطتي 🩵"];
+
+  /* ===== default words (full list from your earlier code) ===== */
+  const defaultWords = [
+    { en: "duty", ar: "واجب - وظيفة" },
+    { en: "emergency", ar: "حالة طوارئ" },
+    { en: "flood", ar: "يغمر - فيضان" },
+    { en: "obligation", ar: "التزام - واجب" },
+    { en: "protect", ar: "يحمي - يحافظ" },
+    { en: "rescue", ar: "ينقذ" },
+    { en: "risk", ar: "يتخذ مخاطرة" },
+    { en: "risky", ar: "خطير - محفوف بالمخاطر" },
+    { en: "truth", ar: "حقيقة" },
+    { en: "accident", ar: "حادث" },
+    { en: "act", ar: "يفعل - يتصرف" },
+    { en: "aspect", ar: "جانب" },
+    { en: "believe in", ar: "يؤمن بـ" },
+    { en: "breathe", ar: "يتنفس" },
+    { en: "crowded", ar: "مزدحم" },
+    { en: "damp", ar: "رطب" },
+    { en: "debate", ar: "نقاش" },
+    { en: "descriptive", ar: "وصفى" },
+    { en: "drown", ar: "يغرق" },
+    { en: "fear", ar: "خوف" },
+    { en: "fire", ar: "نار - حريق" },
+    { en: "firefighter", ar: "رجل إطفاء" },
+    { en: "forever", ar: "إلى الأبد" },
+    { en: "hope", ar: "أمل" },
+    { en: "injured", ar: "مصاب" },
+    { en: "ladder", ar: "سلم" },
+    { en: "lifeguard", ar: "منقذ" },
+    { en: "moss", ar: "طحالب" },
+    { en: "overall", ar: "إجمالي - عام" },
+    { en: "pine needle", ar: "إبرة الصنوبر" },
+    { en: "put out", ar: "يطفئ" },
+    { en: "rustling", ar: "خفيف (أصوات الأوراق)" },
+    { en: "sadly", ar: "بأسف" },
+    { en: "save", ar: "ينقذ - يحفظ" },
+    { en: "scenario", ar: "سيناريو" },
+    { en: "serious", ar: "خطير - جاد" },
+    { en: "serve", ar: "يخدم" },
+    { en: "service", ar: "خدمة" },
+    { en: "stand-stood-stood", ar: "يقف" },
+    { en: "storm", ar: "عاصفة" },
+    { en: "summarize", ar: "يلخص" },
+    { en: "texture", ar: "نسيج - قوام" },
+    { en: "training", ar: "تدريب" },
+    { en: "trap", ar: "يحبس - يخدع" },
+    { en: "voluntary", ar: "تطوعي" },
+    { en: "worth", ar: "يستحق" },
+    { en: "yet", ar: "ما زال - بعد" }
+  ];
+
+  /* ===== utilities ===== */
+  function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]] } return a; }
+  function dedupeKeepOrder(arr){ const seen=new Set(); const out=[]; arr.forEach(it=>{ if(!it) return; const key=`${it.en}|||${it.ar}`; if(!seen.has(key)){ seen.add(key); out.push(it); }}); return out; }
+  function randomFrom(list){ return list[Math.floor(Math.random()*list.length)]; }
+
+  /* ===== TTS ===== */
+  function speak(text, langPref){
+    if(!window.speechSynthesis) return;
+    const utter = new SpeechSynthesisUtterance(text);
+    const voices = window.speechSynthesis.getVoices();
+    let voice = null;
+    if(langPref === 'en'){
+      voice = voices.find(v=>/en-?/.test(v.lang)) || voices.find(v=>v.lang.startsWith('en')) || null;
+      utter.lang = voice ? voice.lang : 'en-US';
+    } else {
+      voice = voices.find(v=>/ar-?/.test(v.lang)) || voices.find(v=>v.lang.startsWith('ar')) || null;
+      utter.lang = voice ? voice.lang : 'ar-SA';
+    }
+    if(voice) utter.voice = voice;
+    utter.rate = 0.95; utter.pitch = 1;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utter);
+  }
+
+  /* ===== audio tones (small) ===== */
+  const audioCtx = (typeof AudioContext !== 'undefined') ? new AudioContext() : null;
+  function playTone(freq, type='sine', duration=0.12, gain=0.08){
+    if(!audioCtx) return;
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.type = type; o.frequency.value = freq; g.gain.value = gain;
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start();
+    o.stop(audioCtx.currentTime + duration);
+  }
+  function playCorrect(){ playTone(880,'sine',0.08,0.06); setTimeout(()=>playTone(1100,'sine',0.08,0.04),70); }
+  function playWrong(){ playTone(220,'sawtooth',0.16,0.12); }
+
+  /* ===== confetti ===== */
+  let confettiParticles = [];
+  function resizeCanvas(){ confettiCanvas.width = window.innerWidth; confettiCanvas.height = window.innerHeight; }
+  window.addEventListener('resize', resizeCanvas); resizeCanvas();
+  function spawnConfetti(amount=40){
+    if(!confettiCtx) return;
+    confettiParticles = [];
+    for(let i=0;i<amount;i++){
+      confettiParticles.push({
+        x: Math.random()*confettiCanvas.width,
+        y: Math.random()*confettiCanvas.height - confettiCanvas.height/2,
+        vx: (Math.random()-0.5)*8,
+        vy: Math.random()*6+2,
+        size: Math.random()*8+6,
+        color: `hsl(${Math.random()*360} 75% 60%)`,
+        rot: Math.random()*360,
+        rotSpeed: (Math.random()-0.5)*10
+      });
+    }
+    requestAnimationFrame(confettiFrame);
+  }
+  let confettiFrameId = null;
+  function confettiFrame(){
+    if(!confettiCtx) return;
+    confettiCtx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+    for(let p of confettiParticles){
+      p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.rot += p.rotSpeed;
+      confettiCtx.save();
+      confettiCtx.translate(p.x,p.y);
+      confettiCtx.rotate(p.rot * Math.PI/180);
+      confettiCtx.fillStyle = p.color;
+      confettiCtx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
+      confettiCtx.restore();
+    }
+    confettiParticles = confettiParticles.filter(p=>p.y < confettiCanvas.height+50);
+    if(confettiParticles.length>0) confettiFrameId = requestAnimationFrame(confettiFrame);
+    else { if(confettiFrameId) cancelAnimationFrame(confettiFrameId); confettiFrameId = null; confettiCtx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height); }
+  }
+
+  /* ===== save/load state ===== */
+  function saveState(){
+    try{
+      const obj = { originalWords, words, current, mistakes, mode, correctCount, starsEarned };
+      localStorage.setItem(localKey, JSON.stringify(obj));
+      saveStatus.innerText = 'تم الحفظ ✅';
+      setTimeout(()=> saveStatus.innerText = 'تم الحفظ ✅', 1200);
+    }catch(e){}
+  }
+  function loadState(){
+    try{
+      const s = localStorage.getItem(localKey);
+      if(!s) return null;
+      return JSON.parse(s);
+    }catch(e){ return null; }
+  }
+  function clearState(){ try{ localStorage.removeItem(localKey); saveStatus.innerText = 'لم يتم الحفظ بعد'; }catch(e){} }
+
+  /* ===== resume check ===== */
+  if(loadState()){
+    resumeArea.style.display = 'block';
+  }
+
+  resumeBtn && resumeBtn.addEventListener('click', ()=>{
+    const s = loadState();
+    if(!s) return;
+    originalWords = s.originalWords && s.originalWords.length ? s.originalWords : defaultWords.slice();
+    words = s.words || [];
+    current = s.current || 0;
+    mistakes = s.mistakes || [];
+    mode = s.mode || null;
+    correctCount = s.correctCount || 0;
+    starsEarned = s.starsEarned || 0;
+    // show quiz or modes depending
+    if(mode){
+      homeControls.style.display = 'none';
+      modesSection.style.display = 'none';
+      quizBlock.style.display = 'block';
+      typeArea.style.display = (mode === 'type') ? 'block' : 'none';
+      updateStars();
+      updateProgressBar(current, words.length || originalWords.length);
+      showQuestion();
+    } else {
+      homeControls.style.display = 'none';
+      modesSection.style.display = 'flex';
+    }
+  });
+
+  /* ===== file parsing ===== */
+  fileInput.addEventListener('change', e=>{
+    const f = e.target.files[0];
+    if(!f) return;
+    const reader = new FileReader();
+    reader.onload = ev=>{
+      const raw = ev.target.result;
+      const lines = raw.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+      const parsed = lines.map(line=>{
+        // detect separator: '=' or '-' or space
+        let sep = null;
+        if(line.includes('=')) sep='=';
+        else if(line.includes('-')) sep='-';
+        else sep=' ';
+        const parts = line.split(sep).map(p=>p.trim()).filter(Boolean);
+        if(parts.length>=2) return {en:parts[0], ar:parts.slice(1).join(' ')};
+        const p2 = line.split(/\s+/);
+        if(p2.length>=2) return {en:p2[0], ar:p2.slice(1).join(' ')};
+        return null;
+      }).filter(Boolean);
+      if(parsed.length===0){ alert('لم يتم العثور على كلمات صالحة في الملف'); return; }
+      originalWords = parsed;
+      words = originalWords.slice();
+      saveState();
+      alert(`تم تحميل ${originalWords.length} كلمة ✅`);
+      // show home controls enabled
+      homeControls.style.display = 'flex';
+      saveStatus.innerText = `قائمة جديدة: ${originalWords.length} كلمة`;
+      setTimeout(()=> saveStatus.innerText = 'تم الحفظ ✅', 1200);
+    };
+    reader.readAsText(f,'UTF-8');
+  });
+
+  /* ===== start flow ===== */
+  startBtn.addEventListener('click', ()=>{
+    // if no file uploaded, use defaults
+    if(!originalWords || originalWords.length===0) originalWords = defaultWords.slice();
+    homeControls.style.display = 'none';
+    modesSection.style.display = 'flex';
+  });
+
+  startMC.addEventListener('click', ()=>{ mode = 'mc'; beginRound(pickWords()); });
+  startType.addEventListener('click', ()=>{ mode = 'type'; beginRound(pickWords()); });
+
+  function pickWords(){ return originalWords.slice(); }
+
+  /* ===== begin round ===== */
+  function beginRound(list){
+    words = list.slice();
+    current = 0;
+    mistakes = [];
+    feedbackEl.innerText = '';
+    modesSection.style.display = 'none';
+    reviewBlock.style.display = 'none';
+    quizBlock.style.display = 'block';
+    typeArea.style.display = (mode === 'type') ? 'block' : 'none';
+    optionsEl.innerHTML = '';
+    correctCount = 0;
+    starsEarned = 0;
+    updateStars();
+    updateProgressBar(current, words.length);
+    showQuestion();
+    saveState();
+  }
+
+  function showQuizDirectly(){
+    quizBlock.style.display = 'block';
+    typeArea.style.display = (mode === 'type') ? 'block' : 'none';
+    updateStars();
+    updateProgressBar(current, words.length || originalWords.length);
+    showQuestion();
+  }
+
+  /* ===== progress bar ===== */
+  function updateProgressBar(idx, total){
+    const tot = total || (originalWords.length || 1);
+    const cur = Math.min(idx+1, tot);
+    progressText.innerText = `${cur}/${tot} سؤال`;
+    const pct = Math.round((idx / Math.max(1, tot)) * 100);
+    progressBar.style.width = pct + '%';
+  }
+
+  /* ===== show question ===== */
+  function showQuestion(){
+    if(current >= words.length){
+      quizBlock.style.display = 'none';
+      showReview();
+      return;
+    }
+    updateProgressBar(current, words.length);
+    const q = words[current];
+    if(mode === 'mc'){
+      // show English as question and Arabic options
+      const ask = q.en;
+      questionText.innerText = `Question: "${ask}"`;
+      let opts = [q.ar];
+      while(opts.length < 4){
+        const pick = originalWords[Math.floor(Math.random()*originalWords.length)].ar;
+        if(!opts.includes(pick)) opts.push(pick);
+      }
+      opts = shuffle(opts);
+      optionsEl.innerHTML = '';
+      opts.forEach(opt=>{
+        const el = document.createElement('button');
+        el.className = 'option';
+        el.textContent = opt;
+        el.onclick = ()=> handleMCChoice(el, opt, q);
+        optionsEl.appendChild(el);
+      });
+      typeArea.style.display = 'none';
+      typeInput.value = '';
+      typeInput.blur();
+      speak(ask,'en');
+      animateQuestionIn();
+    } else if(mode === 'type'){
+      // show Arabic and expect english input
+      questionText.innerText = q.ar;
+      optionsEl.innerHTML = '';
+      typeArea.style.display = 'block';
+      typeInput.value = '';
+      typeInput.focus();
+      speak(q.ar,'ar');
+      animateQuestionIn();
+    }
+    saveState();
+  }
+
+  function animateQuestionIn(){
+    const el = document.getElementById('question');
+    if(!el) return;
+    el.style.transform = 'translateY(-6px)';
+    setTimeout(()=> el.style.transform = 'translateY(0)',220);
+  }
+
+  /* ===== speak question button ===== */
+  speakBtn.addEventListener('click', ()=>{
+    const q = words[current];
+    if(!q) return;
+    if(mode === 'mc') speak(q.en,'en'); else speak(q.ar,'ar');
+  });
+
+  /* ===== MC handler ===== */
+  function handleMCChoice(el, chosen, q){
+    const options = Array.from(document.querySelectorAll('.option'));
+    options.forEach(o => o.style.pointerEvents='none');
+    if(chosen === q.ar){
+      el.classList.add('correct');
+      feedbackEl.innerText = randomFrom(msgsCorrect);
+      playCorrect();
+      correctCount++;
+      checkForStar();
+    } else {
+      el.classList.add('wrong');
+      options.forEach(o => { if(o.textContent === q.ar) o.classList.add('correct'); });
+      feedbackEl.innerText = randomFrom(msgsWrong);
+      playWrong();
+      mistakes.push(q);
+    }
+    setTimeout(()=>{
+      if(chosen !== q.ar) speak(q.ar,'ar');
+      current++;
+      feedbackEl.innerText = '';
+      showQuestion();
+    },900);
+  }
+
+  /* ===== typing handler ===== */
+  typeInput.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      const val = typeInput.value.trim();
+      if(val === '') return;
+      handleTyping(val);
+    }
+  });
+  function handleTyping(val){
+    const q = words[current];
+    const correct = q.en.trim().toLowerCase();
+    const given = val.trim().toLowerCase();
+    if(given === correct){
+      feedbackEl.innerText = randomFrom(msgsCorrect);
+      playCorrect();
+      speak(q.en,'en');
+      correctCount++;
+      checkForStar();
+    } else {
+      feedbackEl.innerText = randomFrom(msgsWrong);
+      playWrong();
+      speak(q.en,'en');
+      mistakes.push(q);
+    }
+    typeInput.blur();
+    setTimeout(()=>{
+      current++;
+      feedbackEl.innerText = '';
+      showQuestion();
+    },900);
+  }
+
+  /* ===== stars logic ===== */
+  function checkForStar(){
+    const newStars = Math.floor(correctCount / 5);
+    if(newStars > starsEarned){
+      const gained = newStars - starsEarned;
+      starsEarned = newStars;
+      for(let i=0;i<gained;i++){
+        const idx = Math.min(starEls.length-1, starsEarned-1-i);
+        if(starEls[idx]) {
+          starEls[idx].classList.add('active');
+          starEls[idx].style.transform = 'scale(1.22)';
+          setTimeout(()=> starEls[idx].style.transform = 'scale(1)',300);
+        }
+      }
+      spawnConfetti(60);
+    }
+    updateStars();
+    saveState();
+  }
+  function updateStars(){
+    for(let i=0;i<starEls.length;i++){
+      if(i < starsEarned) starEls[i].classList.add('active'); else starEls[i].classList.remove('active');
+    }
+  }
+
+  /* ===== review / retry / home ===== */
+  function showReview(){
+    reviewBlock.style.display = 'block';
+    const unique = dedupeKeepOrder(mistakes);
+    reviewList.innerHTML = '';
+    if(unique.length === 0){
+      reviewList.innerHTML = `<div class="review-item" style="justify-content:center">برافو! مفيش ولا غلطة 👏❤️</div>`;
+      finalMsg.style.display = 'block';
+      showSecretButton(); // show special button when perfect
+      spawnConfetti(120);
+    } else {
+      unique.forEach(u=>{
+        const div = document.createElement('div');
+        div.className = 'review-item';
+        div.innerHTML = `<div style="text-align:right">${u.en} → <span class="mean">${u.ar}</span></div>
+                         <div>
+                           <button class="play-icon" data-lang="en" data-en="${u.en}" title="اسمع الانجليزي">🔊</button>
+                           <button class="play-icon" data-lang="ar" data-ar="${u.ar}" title="اسمع العربي">🔈</button>
+                         </div>`;
+        reviewList.appendChild(div);
+      });
+      finalMsg.style.display = 'none';
+    }
+    retryBtn.style.display = unique.length > 0 ? 'inline-block' : 'none';
+    // attach play buttons
+    attachPlayButtons();
+    saveState();
+  }
+
+  retryBtn.addEventListener('click', ()=>{
+    const unique = dedupeKeepOrder(mistakes);
+    if(unique.length === 0){ alert('مفيش كلمات غلط 🎉'); return; }
+    words = unique.slice();
+    mistakes = [];
+    current = 0;
+    quizBlock.style.display = 'block';
+    reviewBlock.style.display = 'none';
+    feedbackEl.innerText = '';
+    updateProgressBar(current, words.length);
+    showQuestion();
+  });
+
+  homeBtn.addEventListener('click', resetToHome);
+  homeBtnFixed.addEventListener('click', resetToHome);
+
+  function resetToHome(){
+    originalWords = originalWords.length ? originalWords.slice() : defaultWords.slice();
+    words = [];
+    mistakes = [];
+    current = 0;
+    mode = null;
+    correctCount = 0;
+    starsEarned = 0;
+    updateStars();
+    document.getElementById('hearts').style.display='flex';
+    document.getElementById('icon-book').style.display='block';
+    document.getElementById('subtitle').style.display='block';
+    document.getElementById('divider').style.display='block';
+    document.getElementById('main-title').style.display='block';
+    homeControls.style.display='flex';
+    modesSection.style.display='none';
+    quizBlock.style.display='none';
+    reviewBlock.style.display='none';
+    finalMsg.style.display='none';
+    feedbackEl.innerText = '';
+    updateProgressBar(0, originalWords.length);
+    clearState();
+  }
+
+  saveBtn.addEventListener('click', ()=>{
+    saveState();
+    alert('تم حفظ التقدّم ✅');
+  });
+
+  /* attach play icons in review */
+  function attachPlayButtons(){
+    document.querySelectorAll('.play-icon').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const lang = btn.getAttribute('data-lang');
+        if(lang === 'en') speak(btn.getAttribute('data-en'),'en');
+        else speak(btn.getAttribute('data-ar'),'ar');
+      });
+    });
+  }
+
+  /* keyboard quickstart */
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter' && homeControls.style.display !== 'none'){
+      startBtn.click();
+    }
+  });
+
+  /* ensure speak voices ready */
+  if(window.speechSynthesis){ window.speechSynthesis.onvoiceschanged = ()=>{} }
+
+  /* save on beforeunload */
+  window.addEventListener('beforeunload', ()=> { saveState(); });
+
+  /* ===== secret button (every minute appears) ===== */
   const loveMessages = [
     "بحبككككككككككككككك والله 💖",
     "يخرااااااشي شطوووووورة 😍",
-    "مزززهه وشاطرة 💋"
+    "مزززهه وشاطرة 💋",
+    "يخراشي شطورة",
+    "مزه وشاطرة"
   ];
 
-  function showSecretBtn() {
+  function showSecretButton(){
     secretBtn.style.display = 'block';
-    setTimeout(() => { secretBtn.style.display = 'none'; }, 15000); // يظهر 15 ثانية
+    // auto hide after 15s if not clicked
+    setTimeout(()=>{ if(secretBtn) secretBtn.style.display = 'none'; }, 15000);
   }
+  // show every minute (start after 1 minute)
+  setInterval(showSecretButton, 60000);
+  setTimeout(showSecretButton, 60000);
 
-  // يظهر الزر أول مرة بعد دقيقة، ثم كل دقيقة
-  setInterval(showSecretBtn, 60000);
-  setTimeout(showSecretBtn, 60000);
-
-  secretBtn.addEventListener('click', () => {
+  secretBtn.addEventListener('click', ()=>{
     const randomMsg = loveMessages[Math.floor(Math.random() * loveMessages.length)];
     loveText.textContent = randomMsg;
     lovePopup.style.display = 'block';
     secretBtn.style.display = 'none';
+    // auto-hide popup after 1 minute? user wanted periodic; keep manual close but auto close after 10s:
+    setTimeout(()=>{ lovePopup.style.display = 'none'; }, 10000);
   });
 
-  closePopup.addEventListener('click', () => {
+  closePopup.addEventListener('click', ()=>{
     lovePopup.style.display = 'none';
   });
+
+  /* a quick "show when perfect" function */
+  function showSecretButtonShort(){
+    secretBtn.style.display = 'block';
+    setTimeout(()=>{ secretBtn.style.display = 'none'; }, 10000);
+  }
+
+  /* ===== hearts floating (decor) ===== */
+  const heartsBg = document.getElementById('hearts-bg');
+  setInterval(()=>{
+    const h = document.createElement('div');
+    h.className = 'heart';
+    h.innerText = '❤️';
+    const size = 12 + Math.random()*28;
+    h.style.fontSize = size + 'px';
+    h.style.left = (Math.random()*100) + 'vw';
+    h.style.animationDuration = (6 + Math.random()*6) + 's';
+    heartsBg.appendChild(h);
+    setTimeout(()=> h.remove(), 9000);
+  }, 600);
+
+  /* ===== confetti + stars initial update ===== */
+  function updateStars(){ for(let i=0;i<starEls.length;i++){ if(i < starsEarned) starEls[i].classList.add('active'); else starEls[i].classList.remove('active'); } }
+  updateStars();
+
+  /* ===== helper: update progress initially ===== */
+  updateProgressBar(0, defaultWords.length);
+
+  /* ===== small helper functions used earlier (declared here to avoid hoisting issues) ===== */
+  // shuffle already defined above.
+
+  /* ===== initial data ===== */
+  originalWords = defaultWords.slice();
+  words = originalWords.slice();
+
+  /* ===== expose some for debugging (optional) ===== */
+  window.__quiz = { saveState, loadState, clearState };
+
+  /* ===== final small guard: ensure start buttons exist (if user copied parts in wrong order) ===== */
+  // (No-op — all elements present now)
+
+});
 </script>
 </body>
 </html>
-<script>
-/* ====== Stars & Confetti ====== */
-const starsWrap=document.getElementById('starsWrap');
-const starEls=[document.getElementById('star1'),document.getElementById('star2'),document.getElementById('star3'),document.getElementById('star4'),document.getElementById('star5')];
-let correctCount=0, starsEarned=0;
-
-function checkForStar(){
-  let newStars=Math.floor(correctCount/5);
-  if(newStars>starsEarned){
-    let gained=newStars-starsEarned;
-    starsEarned=newStars;
-    for(let i=0;i<gained;i++){
-      const idx=Math.min(starEls.length-1, starsEarned-1-i);
-      if(starEls[idx]){ starEls[idx].style.opacity=1; starEls[idx].style.transform='scale(1.3)'; setTimeout(()=>starEls[idx].style.transform='scale(1)',300); }
-    }
-    spawnConfetti(60);
-  }
-}
-function updateStars(){starEls.forEach((s,i)=>{s.style.opacity=i<starsEarned?1:0.25});}
-
-/* ====== Confetti ====== */
-const confettiCanvas=document.getElementById('confetti');
-const ctx=confettiCanvas.getContext('2d');
-let confettiParticles=[];
-function spawnConfetti(num){
-  const w=confettiCanvas.width=window.innerWidth;
-  const h=confettiCanvas.height=window.innerHeight;
-  for(let i=0;i<num;i++){
-    confettiParticles.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*6+4,d:Math.random()*30,dx:(Math.random()*4-2),dy:(Math.random()*4+2),color:`hsl(${Math.random()*360},70%,50%)`});
-  }
-  requestAnimationFrame(updateConfetti);
-}
-function updateConfetti(){
-  ctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
-  confettiParticles.forEach(p=>{ctx.fillStyle=p.color;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();p.x+=p.dx;p.y+=p.dy;if(p.y>confettiCanvas.height){p.y=0;p.x=Math.random()*confettiCanvas.width}});if(confettiParticles.length>0)requestAnimationFrame(updateConfetti);
-}
-
-/* ====== Secret Message ====== */
-const secretMessage=document.getElementById('secretMessage');
-const secretClose=document.getElementById('secretClose');
-let keyBuffer='';
-window.addEventListener('keydown',e=>{
-  keyBuffer+=e.key.toLowerCase(); if(keyBuffer.length>10) keyBuffer=keyBuffer.slice(-10);
-  if(keyBuffer.includes('moaz')||keyBuffer.includes('معاذ')){
-    secretMessage.style.display='block';
-    setTimeout(()=>{secretMessage.style.display='none'},5000);
-    keyBuffer='';
-  }
-});
-secretClose.onclick=()=>{secretMessage.style.display='none'}
-
-/* ====== File Upload & Save State ====== */
-const localKey='lina_quiz_v1_state';
-function saveState(){try{localStorage.setItem(localKey,JSON.stringify({originalWords,words,current,mistakes,mode,correctCount,starsEarned}));}catch(e){}}
-function loadState(){try{let s=localStorage.getItem(localKey);if(!s)return null;return JSON.parse(s);}catch(e){return null}}
-function clearState(){try{localStorage.removeItem(localKey);}catch(e){}}
-fileInput.addEventListener('change',e=>{
-  const f=e.target.files[0];if(!f)return;
-  const reader=new FileReader();
-  reader.onload=ev=>{
-    const raw=ev.target.result;
-    const lines=raw.split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
-    const parsed=lines.map(line=>{
-      let sep=line.includes('=')?'=':(line.includes('-')?'-':' ');
-      let parts=line.split(sep).map(p=>p.trim()).filter(Boolean);
-      if(parts.length>=2)return {en:parts[0],ar:parts.slice(1).join(' ')};
-      return null;
-    }).filter(Boolean);
-    if(parsed.length===0){alert('لم يتم العثور على كلمات صالحة في الملف'); return;}
-    originalWords=parsed;
-    alert(`تم تحميل ${originalWords.length} كلمة ✅`);
-    saveState();
-  };
-  reader.readAsText(f,'UTF-8');
-});
-
-/* ====== Home Reset & Retry ====== */
-homeBtnFixed.onclick=()=>{quizBlock.style.display='none';reviewBlock.style.display='none';homeControls.style.display='flex';modesSection.style.display='none';feedbackEl.innerText='';current=0;words=[];mistakes=[];correctCount=0;starsEarned=0;updateStars();clearState();}
-retryBtn.onclick=()=>{let unique=[...new Map(mistakes.map(i=>[i.en,i])).values()];if(unique.length===0){alert('مفيش كلمات غلط 🎉');return;}words=unique.slice();current=0;mistakes=[];quizBlock.style.display='block';reviewBlock.style.display='none';showQuestion();feedbackEl.innerText='';}
-
-/* ====== Speak Button ====== */
-speakQuestionBtn.onclick=()=>{const q=words[current];if(!q)return;mode==='mc'?speak(q.en,'en'):speak(q.ar,'ar')}
-
-/* ====== Initialize ====== */
-originalWords=defaultWords.slice();
-updateStars();
-updateProgressBar(0,originalWords.length);
-</script>
-<script>
-/* ====== Typing Mode Handler ====== */
-typeInput.addEventListener('keydown', e=>{
-  if(e.key==='Enter'){
-    e.preventDefault();
-    const val = typeInput.value.trim();
-    if(!val) return;
-    handleTyping(val);
-  }
-});
-
-function handleTyping(val){
-  const q = words[current];
-  const correct = q.en.trim().toLowerCase();
-  const given = val.trim().toLowerCase();
-  
-  if(given === correct){
-    feedbackEl.innerText = msgsCorrect[Math.floor(Math.random()*msgsCorrect.length)];
-    speak(q.en,'en');
-    correctCount++;
-    checkForStar();
-  } else {
-    feedbackEl.innerText = msgsWrong[Math.floor(Math.random()*msgsWrong.length)];
-    speak(q.en,'en');
-    mistakes.push(q);
-  }
-  
-  typeInput.value = '';
-  typeInput.blur();
-  setTimeout(()=>{
-    current++;
-    feedbackEl.innerText='';
-    showQuestion();
-  },900);
-}
-
-/* ====== Multiple Choice Handler ====== */
-function handleMCChoice(el, chosen, q){
-  const options = Array.from(document.querySelectorAll('.option'));
-  options.forEach(o => o.style.pointerEvents='none');
-  
-  if(chosen === q.ar){
-    el.classList.add('correct');
-    feedbackEl.innerText = msgsCorrect[Math.floor(Math.random()*msgsCorrect.length)];
-    correctCount++;
-    checkForStar();
-    playCorrect();
-  } else {
-    el.classList.add('wrong');
-    options.forEach(o => { if(o.textContent===q.ar) o.classList.add('correct'); });
-    feedbackEl.innerText = msgsWrong[Math.floor(Math.random()*msgsWrong.length)];
-    mistakes.push(q);
-    playWrong();
-  }
-  
-  setTimeout(()=>{
-    if(chosen !== q.ar) speak(q.ar,'ar');
-    current++;
-    feedbackEl.innerText='';
-    showQuestion();
-  },900);
-}
-
-/* ====== Review List Play Buttons ====== */
-function attachPlayButtons(){
-  document.querySelectorAll('.play-icon').forEach(btn=>{
-    btn.onclick=()=>{
-      const lang=btn.dataset.lang;
-      if(lang==='en') speak(btn.dataset.en,'en');
-      else speak(btn.dataset.ar,'ar');
-    }
-  });
-}
-
-/* ====== Show Review ====== */
-function showReview(){
-  reviewBlock.style.display='block';
-  const unique=dedupeKeepOrder(mistakes);
-  
-  if(unique.length===0){
-    reviewList.innerHTML=`<div class="review-item" style="justify-content:center">برافو! مفيش ولا غلطة 👏❤️</div>`;
-    finalMsg.style.display='block';
-    showSecretButton();
-    spawnConfetti(120);
-  } else {
-    reviewList.innerHTML = unique.map(u=>`
-      <div class="review-item">
-        <div style="text-align:right">${u.en} → <span class="mean">${u.ar}</span></div>
-        <div>
-          <button class="play-icon" data-lang="en" data-en="${u.en}" title="اسمع الانجليزي">🔊</button>
-          <button class="play-icon" data-lang="ar" data-ar="${u.ar}" title="اسمع العربي">🔈</button>
-        </div>
-      </div>
-    `).join('');
-    attachPlayButtons();
-    finalMsg.style.display='none';
-  }
-  retryBtn.style.display = unique.length>0?'inline-block':'none';
-  saveState();
-}
-
-/* ====== Start Round ====== */
-function beginRound(list){
-  words = list.slice();
-  current = 0;
-  mistakes = [];
-  correctCount=0;
-  starsEarned=0;
-  updateStars();
-  
-  modesSection.style.display='none';
-  reviewBlock.style.display='none';
-  finalMsg.style.display='none';
-  quizBlock.style.display='block';
-  typeArea.style.display = (mode==='type')?'block':'none';
-  optionsEl.innerHTML='';
-  feedbackEl.innerText='';
-  updateProgressBar(current, words.length);
-  showQuestion();
-  saveState();
-}
-
-/* ====== Utility: Play Sounds (optional) ====== */
-function playCorrect(){ /* ممكن تضيف صوت */ }
-function playWrong(){ /* ممكن تضيف صوت */ }
-
-/* ====== Speak TTS ====== */
-function speak(text,langPref){
-  if(!window.speechSynthesis) return;
-  const utter=new SpeechSynthesisUtterance(text);
-  const voices=window.speechSynthesis.getVoices();
-  let voice=null;
-  if(langPref==='en'){
-    voice = voices.find(v=>/en-?/.test(v.lang)) || voices.find(v=>v.lang.startsWith('en')) || null;
-    utter.lang = voice?voice.lang:'en-US';
-  } else if(langPref==='ar'){
-    voice = voices.find(v=>/ar-?/.test(v.lang)) || voices.find(v=>v.lang.startsWith('ar')) || null;
-    utter.lang = voice?voice.lang:'ar-SA';
-  }
-  if(voice) utter.voice=voice;
-  utter.rate=0.95; utter.pitch=1;
-  window.speechSynthesis.cancel();
-  window.speechSynthesis.speak(utter);
-}
-
-/* ====== Initialization ====== */
-originalWords = defaultWords.slice();
-updateStars();
-updateProgressBar(0,originalWords.length);
-</script>
